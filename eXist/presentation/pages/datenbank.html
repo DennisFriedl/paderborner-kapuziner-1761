@@ -1,0 +1,378 @@
+<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+    <div class="container">
+        <div class="row">
+            <h1>Die Datenbank</h1>
+        </div>
+        <div class="row d-flex justify-content-center" id="search-row">
+            <div class="search col col-xxl-6 col col-xl-8 col-lg-9 col-md-10 col-12 offset-xl-2 d-flex justify-content-center" id="simple-search-col">
+                <div class="searchbar">
+                    <input id="simple-search-bar" class="searchbar" type="text" placeholder="Datenbank durchsuchen..."/>
+                    <button type="submit" onclick="simpleSearch()"><i class="fas fa-search"/></button>
+                </div>
+            </div>
+
+            <div class="hidden col col-xxl-6 col col-xl-8 col-lg-9 col-md-10 col-12 offset-xl-2" id="advanced-search-col">
+                <div class="row" id="entity-type-row">
+                    <div class="col col-12 col-sm-3">
+                        <p class="bold">Ich suche: </p>
+                    </div>
+                    <div class="col col-12 col-sm-auto">
+                        <div class="row">
+                            <div class="col col-auto">
+                                <a class="checkbutton checked" id="filter-editions" onclick="switchAdvancedSearchEntityFilter(this, 'editions-')">Auflagen</a>
+                            </div>
+                            <div class="col col-auto">
+                                <a class="checkbutton" id="filter-persons" onclick="switchAdvancedSearchEntityFilter(this, 'persons-')">Personen</a>
+                            </div>
+                            <div class="col col-auto">
+                                <a class="checkbutton" id="filter-places" onclick="switchAdvancedSearchEntityFilter(this, 'places-')">Orte</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <div id="editions-filter-div" class="filter-div">
+                    <div id="editions-advanced-search-rows" class="advanced-search-rows">
+                        <div class="row advanced-search-row editions-search-row">
+                            <div class="col col-12 col-sm-3 col-lg-2">
+                                <p class="bold">Titel</p>
+                            </div>
+                            <div class="col col-12 col-sm-3 form-check-col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="editions-flexRadio1" checked=""/>
+                                    <label class="form-check-label"> enthält </label>
+                                </div>
+                                <div class="form-check">
+                                    <input id="editions-filter-title-radio" class="form-check-input" type="radio" name="editions-flexRadio1"/>
+                                    <label class="form-check-label"> enthält nicht </label>
+                                </div>
+                            </div>
+                            <div class="col col-12 col-sm-6">
+                                <input id="editions-filter-title-search" class="form-control" placeholder="Zeichenkette"/>
+                            </div>
+                        </div>
+
+                        <div class="row advanced-search-row editions-search-row">
+                            <div class="col col-12 col-sm-3 col-lg-2">
+                                <p class="bold">Autor</p>
+                            </div>
+                            <div class="col col-12 col-sm-3 form-check-col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="editions-flexRadio2" checked=""/>
+                                    <label class="form-check-label"> enthält </label>
+                                </div>
+                                <div class="form-check">
+                                    <input id="editions-filter-author-radio" class="form-check-input" type="radio" name="editions-flexRadio2"/>
+                                    <label class="form-check-label"> enthält nicht </label>
+                                </div>
+                            </div>
+                            <div class="col col-12 col-sm-6">
+                                <input id="editions-filter-author-search" class="form-control" placeholder="Zeichenkette"/>
+                            </div>
+                        </div>
+
+                        <div class="row advanced-search-row editions-search-row">
+                            <div class="col col-12 col-sm-3 col-lg-2">
+                                <p class="bold">Erscheinungsort</p>
+                            </div>
+                            <div class="col col-12 col-sm-3 form-check-col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="editions-flexRadio3" checked=""/>
+                                    <label class="form-check-label"> enthält </label>
+                                </div>
+                                <div class="form-check">
+                                    <input id="editions-filter-pubPlace-radio" class="form-check-input" type="radio" name="editions-flexRadio3"/>
+                                    <label class="form-check-label"> enthält nicht </label>
+                                </div>
+                            </div>
+                            <div class="col col-12 col-sm-6">
+                                <input id="editions-filter-pubPlace-search" class="form-control" placeholder="Zeichenkette"/>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <hr/>
+                    <div class="advanced-filter-rows">
+                        <div class="row" id="erscheinungsdatum-filter">
+                            <div class="col col-sm-3">
+                                <p class="bold">Erscheinungsdatum</p>
+                            </div>
+                            <div class="col col-sm-2">
+                                <input id="editions-filter-pubMinDate" class="form-control" placeholder="Jahr" onkeypress="return isNumberOrMinusKey(event)"/>
+                            </div>
+                            <div class="col col-1">
+                                <p>bis</p>
+                            </div>
+                            <div class="col col-sm-2">
+                                <input id="editions-filter-pubMaxDate" class="form-control" placeholder="Jahr" onkeypress="return isNumberOrMinusKey(event)"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-sm-3">
+                                <p class="bold">Maße</p>
+                            </div>
+                            <div class="col col-sm-9">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input editions-filter-format-checkbox" type="checkbox" id="inlineCheckbox1" value="2" checked=""/>
+                                    <label class="form-check-label" for="inlineCheckbox1">2°</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input editions-filter-format-checkbox" type="checkbox" id="inlineCheckbox2" value="4" checked=""/>
+                                    <label class="form-check-label" for="inlineCheckbox2">4°</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input editions-filter-format-checkbox" type="checkbox" id="inlineCheckbox3" value="8" checked=""/>
+                                    <label class="form-check-label" for="inlineCheckbox3">8°</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input editions-filter-format-checkbox" type="checkbox" id="inlineCheckbox4" value="12" checked=""/>
+                                    <label class="form-check-label" for="inlineCheckbox4">12°</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input editions-filter-format-checkbox" type="checkbox" id="inlineCheckbox5" value="16" checked=""/>
+                                    <label class="form-check-label" for="inlineCheckbox5">16°</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input editions-filter-format-checkbox" type="checkbox" id="inlineCheckbox6" value="18" checked=""/>
+                                    <label class="form-check-label" for="inlineCheckbox6">18°</label>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row" id="sprache-filter">
+                            <div class="col col-sm-3">
+                                <p class="bold">Sprache</p>
+                            </div>
+                            <div class="col col-3">
+                                <select class="form-control" id="editions-filter-language">
+                                    <option value="alle" selected="">Alle</option>
+                                    <option value="deu">Deutsch</option>
+                                    <option value="eng">Englisch</option>
+                                    <option value="fre">Französisch</option>
+                                    <option value="gre">Griechisch</option>
+                                    <option value="heb">Hebräisch</option>
+                                    <option value="ita">Italienisch</option>
+                                    <option value="lat">Latein</option>
+                                    <option value="nld">Niederländisch</option>
+                                    <option value="por">Portugiesisch</option>
+                                    <option value="spa">Spanisch</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row in-catalog-filter">
+                            <div class="col col-sm-5">
+                                <p class="bold">Muss im Kapuzinerkatalog vorkommen</p>
+                            </div>
+                            <div class="col col-3 in-catalog-filter-button-col">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input in-catalog-checkbox" type="checkbox" id="editions-filter-in-catalog-checkbox" value="option1"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                </div>
+                <div id="persons-filter-div" class="filter-div hidden">
+                    <div id="persons-advanced-search-rows" class="advanced-search-rows">
+                        <div class="row advanced-search-row persons-search-row">
+                            <div class="col col-12 col-sm-3 col-lg-2">
+                                <p class="bold">Name</p>
+                            </div>
+                            <div class="col col-12 col-sm-3 form-check-col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="persons-flexRadio1" checked=""/>
+                                    <label class="form-check-label"> enthält </label>
+                                </div>
+                                <div class="form-check">
+                                    <input id="persons-filter-name-radio" class="form-check-input" type="radio" name="persons-flexRadio1"/>
+                                    <label class="form-check-label"> enthält nicht </label>
+                                </div>
+                            </div>
+                            <div class="col col-12 col-sm-6">
+                                <input id="persons-filter-name-search" class="form-control" placeholder="Zeichenkette"/>
+                            </div>
+                        </div>
+
+                        <div class="row advanced-search-row persons-search-row">
+                            <div class="col col-12 col-sm-3 col-lg-2">
+                                <p class="bold">Geburtsland</p>
+                            </div>
+                            <div class="col col-12 col-sm-3 form-check-col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="persons-flexRadio2" checked=""/>
+                                    <label class="form-check-label"> enthält </label>
+                                </div>
+                                <div class="form-check">
+                                    <input id="persons-filter-birthcountry-radio" class="form-check-input" type="radio" name="persons-flexRadio2"/>
+                                    <label class="form-check-label"> enthält nicht </label>
+                                </div>
+                            </div>
+                            <div class="col col-12 col-sm-6">
+                                <input id="persons-filter-birthcountry-search" class="form-control" placeholder="Zeichenkette"/>
+                            </div>
+                        </div>
+
+                        <div class="row advanced-search-row persons-search-row">
+                            <div class="col col-12 col-sm-3 col-lg-2">
+                                <p class="bold">Todesland</p>
+                            </div>
+                            <div class="col col-12 col-sm-3 form-check-col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="persons-flexRadio3" checked=""/>
+                                    <label class="form-check-label"> enthält </label>
+                                </div>
+                                <div class="form-check">
+                                    <input id="persons-filter-deathcountry-radio" class="form-check-input" type="radio" name="persons-flexRadio3"/>
+                                    <label class="form-check-label"> enthält nicht </label>
+                                </div>
+                            </div>
+                            <div class="col col-12 col-sm-6">
+                                <input id="persons-filter-deathcountry-search" class="form-control" placeholder="Zeichenkette"/>
+                            </div>
+                        </div>
+
+                        <div class="row advanced-search-row persons-search-row">
+                            <div class="col col-12 col-sm-3 col-lg-2">
+                                <p class="bold">Organisation</p>
+                            </div>
+                            <div class="col col-12 col-sm-3 form-check-col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="persons-flexRadio4" checked=""/>
+                                    <label class="form-check-label"> enthält </label>
+                                </div>
+                                <div class="form-check">
+                                    <input id="persons-filter-organisation-radio" class="form-check-input" type="radio" name="persons-flexRadio4"/>
+                                    <label class="form-check-label"> enthält nicht </label>
+                                </div>
+                            </div>
+                            <div class="col col-12 col-sm-6">
+                                <input id="persons-filter-organisation-search" class="form-control" placeholder="Zeichenkette"/>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="advanced-filter-rows">
+                        <div class="row" id="lebenszeit-filter">
+                            <div class="col col-sm-3">
+                                <p class="bold">Lebenszeit</p>
+                            </div>
+                            <div class="col col-sm-2">
+                                <input id="persons-filter-lifeMinDate" class="form-control" placeholder="Jahr" onkeypress="return isNumberOrMinusKey(event)"/>
+                            </div>
+                            <div class="col col-1">
+                                <p>bis</p>
+                            </div>
+                            <div class="col col-sm-2">
+                                <input id="persons-filter-lifeMaxDate" class="form-control" placeholder="Jahr" onkeypress="return isNumberOrMinusKey(event)"/>
+                            </div>
+                        </div>
+                        <div class="row in-catalog-filter">
+                            <div class="col col-sm-5">
+                                <p class="bold">Muss im Kapuzinerkatalog vorkommen</p>
+                            </div>
+                            <div class="col col-3 in-catalog-filter-button-col">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input in-catalog-checkbox" type="checkbox" id="persons-filter-in-catalog-checkbox" value="option1"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                </div>
+                <div id="places-filter-div" class="filter-div hidden">
+                    <div id="places-advanced-search-rows" class="advanced-search-rows">
+                        <div class="row advanced-search-row places-search-row">
+                            <div class="col col-12 col-sm-3 col-lg-2">
+                                <p class="bold">Name</p>
+                            </div>
+                            <div class="col col-12 col-sm-3 form-check-col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="places-flexRadio1" checked=""/>
+                                    <label class="form-check-label"> enthält </label>
+                                </div>
+                                <div class="form-check">
+                                    <input id="places-filter-name-radio" class="form-check-input" type="radio" name="places-flexRadio1"/>
+                                    <label class="form-check-label"> enthält nicht </label>
+                                </div>
+                            </div>
+                            <div class="col col-12 col-sm-6">
+                                <input id="places-filter-name-search" class="form-control" placeholder="Zeichenkette"/>
+                            </div>
+                        </div>
+
+                        <div class="row advanced-search-row places-search-row">
+                            <div class="col col-12 col-sm-3 col-lg-2">
+                                <p class="bold">Land</p>
+                            </div>
+                            <div class="col col-12 col-sm-3 form-check-col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="places-flexRadio2" checked=""/>
+                                    <label class="form-check-label"> enthält </label>
+                                </div>
+                                <div class="form-check">
+                                    <input id="places-filter-country-radio" class="form-check-input" type="radio" name="places-flexRadio2"/>
+                                    <label class="form-check-label"> enthält nicht </label>
+                                </div>
+                            </div>
+                            <div class="col col-12 col-sm-6">
+                                <input id="places-filter-country-search" class="form-control" placeholder="Zeichenkette"/>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr/>
+                    <div class="advanced-filter-rows">
+                        <div class="row in-catalog-filter">
+                            <div class="col col-sm-5">
+                                <p class="bold">Muss im Kapuzinerkatalog vorkommen</p>
+                            </div>
+                            <div class="col col-3 in-catalog-filter-button-col">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input in-catalog-checkbox" type="checkbox" id="places-filter-in-catalog-checkbox" value="option1"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                </div>
+                <div>
+                    <a class="button" id="big-search-button" onclick="advancedSearch()">Suchen <i class="fas fa-search"/></a>
+                </div>
+            </div>
+
+            <div class="col col-2 align-self-end status-simple" id="switch-between-simple-and-advanced-search">
+                <a class="icon-button" onclick="switchBetweenSimpleAndAdvancedSearch()"><i class="fas fa-caret-square-down" id="switch-between-simple-and-advanced-search-icon"/></a>
+                <p><span id="switch-between-simple-and-advanced-search-word">Erweiterte</span> <br/> Suche</p>
+            </div>
+        </div>
+
+        <div class="row" id="all-entities-row">
+            <p><a href="datenbank.html?query=alleAuflagen&amp;resetCache=true&amp;page=1">Alle Auflagen</a> • <a href="datenbank.html?query=allePersonen&amp;resetCache=true&amp;page=1">Alle Personen</a> • <a href="datenbank.html?query=alleOrte&amp;resetCache=true&amp;page=1">Alle Orte</a></p>
+        </div>
+
+        <div data-template="app:query">
+            <div class="row justify-content-center" id="head-row">
+                <!--<div class="col col-4"/>-->
+                <div class="col col-12 col-sm-auto" data-template="app:hit-count"/>
+                <div class="col col-12 col-sm-auto offset-sm-2 offset-0">
+                    <div class="row">
+                        <div class="col col-auto" id="sort-text-col">
+                            <p>Sortieren nach</p>
+                        </div>
+                        <div class="col col-auto" id="sort-button-col">
+                            <div data-template="app:show-sortings"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-xl-8 offset-xl-2" id="results-col">
+                    <div data-template="app:show-hits"/>
+                </div>
+            </div>
+            <div class="row" data-template="app:create-paging-data"> </div>
+        </div>
+
+    </div>
+</div>

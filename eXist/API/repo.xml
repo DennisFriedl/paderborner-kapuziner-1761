@@ -1,0 +1,14 @@
+<meta xmlns="http://exist-db.org/xquery/repo">
+    <description>Kapuzineredition API</description>
+    <author/>
+    <website/>
+    <status>alpha</status>
+    <license>GNU-LGPL</license>
+    <copyright>true</copyright>
+    <type>application</type>
+    <target>API</target>
+    <prepare>pre-install.xql</prepare>
+    <finish/>
+    
+
+<deployed>2022-09-29T10:13:27.649+02:00</deployed></meta>

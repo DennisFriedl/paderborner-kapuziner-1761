@@ -1,0 +1,31 @@
+<collection xmlns="http://exist-db.org/collection-config/1.0">
+    <index xmlns:tei="http://www.tei-c.org/ns/1.0">
+        <range>
+            <create qname="tei:edition" type="xs:string">
+                <field name="edition-id" match="@xml:id" type="xs:string"/>
+            </create>
+            <create qname="tei:person" type="xs:string">
+                <field name="person-id" match="@xml:id" type="xs:string"/>
+            </create>
+            <create qname="tei:place" type="xs:string">
+                <field name="place-id" match="@xml:id" type="xs:string"/>
+            </create>
+            <create qname="tei:author" type="xs:string">
+                <field name="author-key" match="@key" type="xs:string"/>
+            </create>           
+        </range>
+        
+        <lucene>
+            <analyzer class="org.exist.indexing.lucene.analyzers.NoDiacriticsStandardAnalyzer">
+                <param name="stopwords" type="org.apache.lucene.analysis.util.CharArraySet"/>
+            </analyzer>
+            <text qname="tei:title"/>
+            <text qname="tei:name"/>
+            <text qname="tei:persName"/>
+            <text qname="tei:placeName"/>
+            <text qname="tei:orgName"/>
+            <text qname="tei:addName"/>
+            <text qname="tei:country"/>
+        </lucene>
+    </index>
+</collection>

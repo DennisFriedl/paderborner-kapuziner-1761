@@ -1,0 +1,46 @@
+# Set all colors to grayscale
+# Note: strings of float values are interpreted by matplotlib as gray values.
+
+
+lines.color: black
+lines.linewidth: 2.0     # line width in points
+lines.linestyle: -       # solid line
+patch.facecolor: gray
+patch.edgecolor: black
+
+text.color: black
+
+
+axes.facecolor: white
+axes.edgecolor: black
+axes.labelcolor: black
+axes.linewidth: 2.0     # edge linewidth
+axes.titlesize: x-large   # fontsize of the axes title
+axes.titley: 1.0     # at the top, no autopositioning.
+axes.titlepad: 20.0     # pad between axes and title in points
+axes.labelsize: medium  # fontsize of the x any y labels
+axes.labelpad: 5.0     # space between label and axis
+axes.axisbelow: True   # whether axis gridlines and ticks are below
+                              # the axes elements (lines, text, etc)
+# black to light gray
+axes.prop_cycle: cycler('color', ['0.5', '0.9', '0.65', '0.8', '0.3'])
+
+xtick.color: black
+ytick.color: black
+
+grid.color: black
+grid.linewidth: 1     # in points
+grid.linestyle: -- 
+
+figure.facecolor: white
+figure.edgecolor: white
+figure.figsize: 12, 5    # figure size in inches
+
+image.cmap: gray
+
+savefig.facecolor: white
+savefig.edgecolor: white
+
+font.size: 16
+font.family: monospace
+

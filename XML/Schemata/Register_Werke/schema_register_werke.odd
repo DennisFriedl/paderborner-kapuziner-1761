@@ -1,0 +1,881 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:s="http://purl.oclc.org/dsdl/schematron"
+  xmlns:tei="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Schema Register Werke</title>
+        <author>Dennis Friedl</author>
+      </titleStmt>
+      <publicationStmt>
+        <publisher>TEI Consortium</publisher>
+        <availability status="free">
+          <licence target="http://creativecommons.org/licenses/by-sa/3.0/"> Distributed under a
+            Creative Commons Attribution-ShareAlike 3.0 Unported License </licence>
+          <licence target="http://www.opensource.org/licenses/BSD-2-Clause">
+            <p>Copyright 2013 TEI Consortium.</p>
+            <p>All rights reserved.</p>
+            <p>Redistribution and use in source and binary forms, with or without modification, are
+              permitted provided that the following conditions are met:</p>
+            <list>
+              <item>Redistributions of source code must retain the above copyright notice, this list
+                of conditions and the following disclaimer.</item>
+              <item>Redistributions in binary form must reproduce the above copyright notice, this
+                list of conditions and the following disclaimer in the documentation and/or other
+                materials provided with the distribution.</item>
+            </list>
+            <p>This software is provided by the copyright holders and contributors "as is" and any
+              express or implied warranties, including, but not limited to, the implied warranties
+              of merchantability and fitness for a particular purpose are disclaimed. In no event
+              shall the copyright holder or contributors be liable for any direct, indirect,
+              incidental, special, exemplary, or consequential damages (including, but not limited
+              to, procurement of substitute goods or services; loss of use, data, or profits; or
+              business interruption) however caused and on any theory of liability, whether in
+              contract, strict liability, or tort (including negligence or otherwise) arising in any
+              way out of the use of this software, even if advised of the possibility of such
+              damage.</p>
+          </licence>
+          <p>TEI material can be licensed differently depending on the use you intend to make of it.
+            Hence it is made available under both the CC+BY and BSD-2 licences. The CC+BY licence is
+            generally appropriate for usages which treat TEI content as data or documentation. The
+            BSD-2 licence is generally appropriate for usage of TEI content in a software
+            environment. For further information or clarification, please contact the <ref
+              target="mailto:info@tei-c.org">TEI Consortium</ref>. </p>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Created from scratch by James Cummings, but looking at previous tei_minimal and tei_bare
+          exemplars by SPQR and LR.</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <head>A Minimal TEI Customization</head>
+
+      <p>This TEI ODD defines a TEI customization that is as minimal as possible and the schema
+        generated from it will validate a document that is minimally valid against the TEI scheme.
+        It includes only the ten required elements: <list rend="numbered">
+          <item><gi>teiHeader</gi> from the header module to store required metadata</item>
+          <item><gi>fileDesc</gi> from the header module to record information about this
+            file</item>
+          <item><gi>titleStmt</gi> from the header module to record information about the
+            title</item>
+          <item><gi>publicationStmt</gi> from the header module to detail how it is published</item>
+          <item><gi>sourceDesc</gi> from the header module to record where it is from</item>
+          <item><gi>p</gi> from the core module for use in the header and the body</item>
+          <item><gi>title</gi> from the core module for use in the titleStmt</item>
+          <item><gi>TEI</gi> from the textstructure module because what is a TEI file without
+            that?</item>
+          <item><gi>text</gi> from the textstructure module to hold some text</item>
+          <item><gi>body</gi> from the textstructure module as a place to put that text</item>
+        </list>
+      </p>
+      <schemaSpec ident="schema_register_werke" start="TEI" prefix="tei_" targetLang="en"
+        docLang="de">
+
+        <!-- required minimal header elements -->
+        <moduleRef key="header"
+          include="teiHeader fileDesc titleStmt editionStmt publicationStmt sourceDesc edition idno biblFull extent"/>
+
+        <!-- required core elements (p and title for use in titleStmt) -->
+        <moduleRef key="core"
+          include="p title listBibl bibl textLang date author biblScope relatedItem editor note publisher measure"/>
+
+        <!-- required textstructure elements (TEI, text, and body) -->
+        <moduleRef key="textstructure" include="TEI text body"/>
+
+        <!-- required module tei instantiates lots of classes used for further expansion of this odd -->
+        <moduleRef key="tei"/>
+
+
+        <moduleRef key="namesdates" include="addName placeName settlement"/>
+        <moduleRef key="msdescription" include="msDesc msIdentifier repository physDesc objectDesc supportDesc support dimensions dim height width"/>
+        <elementSpec ident="title" mode="change">
+          <classes mode="change">
+            <memberOf key="att.global.source"/>
+            <memberOf key="att.canonical" mode="delete"/>
+            <memberOf key="att.datable" mode="delete"/>
+            <memberOf key="att.global" mode="delete"/>
+          </classes>
+          <content>
+            <alternate>
+              <elementRef key="title" minOccurs="1" maxOccurs="2"/>
+              <textNode/>
+            </alternate>
+          </content>
+          <constraintSpec ident="titleInBiblSource" scheme="schematron">
+            <constraint><s:rule context="tei:bibl/tei:title">
+                <s:assert test="@source">Muss @source haben.</s:assert>
+              </s:rule>
+            </constraint>
+          </constraintSpec>
+          <constraintSpec ident="titleInBiblType" scheme="schematron">
+            <constraint><s:rule context="tei:bibl/tei:title">
+                <s:report test="@type">Darf kein @type haben.</s:report>
+              </s:rule>
+            </constraint>
+          </constraintSpec>
+          <constraintSpec ident="titleInTitleType" scheme="schematron">
+            <constraint><s:rule context="tei:title/tei:title">
+                <s:assert test="@type">Muss @type haben.</s:assert>
+              </s:rule>
+            </constraint>
+          </constraintSpec>
+          <constraintSpec ident="titleInTitleSource" scheme="schematron">
+            <constraint><s:rule context="tei:title/tei:title">
+                <s:report test="@source">Darf kein @source haben.</s:report>
+              </s:rule>
+            </constraint>
+          </constraintSpec>
+          <constraintSpec ident="titleInTitleTypeMain" scheme="schematron">
+            <constraint><s:rule context="tei:title/tei:title[1]">
+                <s:assert test="matches(@type, 'main')">Erster Titel muss Haupttitel
+                  sein.</s:assert>
+              </s:rule>
+            </constraint>
+          </constraintSpec>
+          <constraintSpec ident="titleInTitleTypeSub" scheme="schematron">
+            <constraint><s:rule context="tei:title/tei:title[2]">
+                <s:assert test="matches(@type, 'sub')">Zweiter Titel muss Untertitel
+                  sein.</s:assert>
+              </s:rule>
+            </constraint>
+          </constraintSpec>
+          <constraintSpec ident="titleInBiblOneMore" scheme="schematron">
+            <constraint><s:rule context="tei:bibl/tei:title">
+                <s:assert test="tei:title">Braucht ein weiteres title-Element als Kind.</s:assert>
+              </s:rule>
+            </constraint>
+          </constraintSpec>
+          <attList>
+            <attDef ident="level" mode="delete"/>
+            <attDef ident="sort" mode="delete"/>
+            <attDef ident="subtype" mode="delete"/>
+            <attDef ident="type" mode="change">
+              <valList type="closed" mode="change">
+                <valItem mode="delete" ident="alt"/>
+                <valItem mode="delete" ident="desc"/>
+                <valItem mode="delete" ident="short"/>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+        <elementSpec ident="listBibl" mode="change">
+          <classes mode="change">
+            <memberOf key="att.declarable" mode="delete"/>
+            <memberOf key="att.global" mode="delete"/>
+            <memberOf key="att.typed" mode="delete"/>
+          </classes>
+          <content>
+            <elementRef key="bibl" minOccurs="1" maxOccurs="unbounded"/>
+          </content>
+          <attList>
+            <attDef ident="sortKey" mode="delete"/>
+          </attList>
+        </elementSpec>
+        <elementSpec ident="bibl" mode="change">
+          <classes mode="change">
+            <memberOf key="att.declarable" mode="delete"/>
+          </classes>
+          <content>
+            <alternate>
+              <!-- Wenn Serie: -->
+              <sequence>
+                <elementRef key="title" minOccurs="0" maxOccurs="1"/>
+                <elementRef key="addName" minOccurs="0" maxOccurs="unbounded"/>
+                <elementRef key="relatedItem" minOccurs="0" maxOccurs="unbounded"/>
+                <elementRef key="idno" minOccurs="0" maxOccurs="unbounded"/>
+                <elementRef key="bibl" minOccurs="0" maxOccurs="unbounded"/>
+              </sequence>
+              <!-- Wenn Monographie: -->
+              <sequence>
+                <elementRef key="title" minOccurs="0" maxOccurs="1"/>
+                <elementRef key="addName" minOccurs="0" maxOccurs="unbounded"/>
+                <elementRef key="biblScope" minOccurs="0" maxOccurs="1"/>
+                <elementRef key="relatedItem" minOccurs="0" maxOccurs="unbounded"/>
+                <elementRef key="author" minOccurs="0" maxOccurs="unbounded"/>
+                <elementRef key="editor" minOccurs="0" maxOccurs="unbounded"/>
+                <elementRef key="textLang" minOccurs="0" maxOccurs="1"/>
+                <elementRef key="edition" minOccurs="0" maxOccurs="unbounded"/>
+                <elementRef key="idno" minOccurs="0" maxOccurs="unbounded"/>
+              </sequence>
+            </alternate>
+            <textNode/>
+          </content>
+          <constraintSpec ident="noAuthorInSeries" scheme="schematron">
+            <constraint><s:rule context="tei:listBibl//tei:bibl[@type='s']">
+                <s:report test="tei:author">Eine Serie kann keinen Autor haben.</s:report>
+              </s:rule>
+            </constraint>
+          </constraintSpec>
+          <constraintSpec ident="correctSeriesID" scheme="schematron">
+            <constraint><s:rule context="tei:listBibl//tei:bibl[@type='s']">
+                <s:assert test="matches(@xml:id, '^s_\d{5}$')">Eine Series-ID muss wie folgt
+                  aufgebaut sein: "s_00000".</s:assert>
+              </s:rule>
+            </constraint>
+          </constraintSpec>
+          <constraintSpec ident="correctMonographID" scheme="schematron">
+            <constraint><s:rule context="tei:listBibl//tei:bibl[@type='m']">
+                <s:assert test="matches(@xml:id, '^m_\d{5}$')">Eine Monograph-ID muss wie folgt
+                  aufgebaut sein: "m_00000".</s:assert>
+              </s:rule>
+            </constraint>
+          </constraintSpec>
+          <constraintSpec ident="biblScopeInMonograph" scheme="schematron">
+            <constraint><s:rule context="tei:listBibl/tei:bibl[@type='m']">
+                <s:report test="tei:biblScope">Eine alleinstehende Monographie darf kein
+                  biblScope-Element haben.</s:report>
+              </s:rule>
+            </constraint>
+          </constraintSpec>
+          <attList>
+            <attDef ident="n" mode="delete"/>
+            <attDef ident="xml:lang" mode="delete"/>
+            <attDef ident="xml:base" mode="delete"/>
+            <attDef ident="xml:space" mode="delete"/>
+            <attDef ident="xml:id" mode="change" usage="rec"/>
+            <attDef ident="ana" mode="delete"/>
+            <attDef ident="change" mode="delete"/>
+            <attDef ident="facs" mode="delete"/>
+            <attDef ident="corresp" mode="delete"/>
+            <attDef ident="synch" mode="delete"/>
+            <attDef ident="sameAs" mode="delete"/>
+            <attDef ident="copyOf" mode="delete"/>
+            <attDef ident="next" mode="delete"/>
+            <attDef ident="prev" mode="delete"/>
+            <attDef ident="exclude" mode="delete"/>
+            <attDef ident="select" mode="delete"/>
+            <attDef ident="rend" mode="delete"/>
+            <attDef ident="style" mode="delete"/>
+            <attDef ident="rendition" mode="delete"/>
+            <attDef ident="cert" mode="delete"/>
+            <attDef ident="resp" mode="delete"/>
+            <attDef ident="source" mode="delete"/>
+            <attDef ident="subtype" mode="change">
+              <valList type="closed" mode="change">
+                <valItem mode="add" ident="translation"/>
+              </valList>
+            </attDef>
+            <attDef ident="type" mode="change" usage="rec">
+              <valList type="closed" mode="change">
+                <valItem mode="add" ident="m"/>
+                <valItem mode="add" ident="s"/>
+              </valList>
+            </attDef>
+            <attDef ident="sortKey" mode="delete"/>
+            <attDef ident="status" mode="delete"/>
+          </attList>
+        </elementSpec>
+        <elementSpec ident="addName" mode="change">
+          <classes mode="change">
+            <memberOf key="att.typed" mode="delete"/>
+          </classes>
+          <content>
+            <textNode/>
+          </content>
+          <constraintSpec ident="addNameSource" scheme="schematron">
+            <constraint><s:rule context="tei:bibl/tei:addName">
+                <s:assert test="@source">Muss source-Attribut haben.</s:assert>
+              </s:rule>
+            </constraint>
+          </constraintSpec>
+          <constraintSpec ident="firstAddName" scheme="schematron">
+            <constraint><s:rule context="tei:listBibl//tei:addName[1]">
+                <s:assert test="matches(@source, 'catalog')">Erster addName muss aus dem Katalog
+                  kommen.</s:assert>
+              </s:rule>
+            </constraint>
+          </constraintSpec>
+          <attList>
+            <attDef ident="key" mode="delete"/>
+            <attDef ident="ref" mode="delete"/>
+            <attDef ident="role" mode="delete"/>
+            <attDef ident="nymRef" mode="delete"/>
+            <attDef ident="cert" mode="delete"/>
+            <attDef ident="resp" mode="delete"/>
+            <attDef ident="rend" mode="delete"/>
+            <attDef ident="style" mode="delete"/>
+            <attDef ident="rendition" mode="delete"/>
+            <attDef ident="corresp" mode="delete"/>
+            <attDef ident="synch" mode="delete"/>
+            <attDef ident="sameAs" mode="delete"/>
+            <attDef ident="copyOf" mode="delete"/>
+            <attDef ident="next" mode="delete"/>
+            <attDef ident="prev" mode="delete"/>
+            <attDef ident="exclude" mode="delete"/>
+            <attDef ident="select" mode="delete"/>
+            <attDef ident="facs" mode="delete"/>
+            <attDef ident="change" mode="delete"/>
+            <attDef ident="ana" mode="delete"/>
+            <attDef ident="xml:id" mode="delete"/>
+            <attDef ident="n" mode="delete"/>
+            <attDef ident="xml:lang" mode="delete"/>
+            <attDef ident="xml:base" mode="delete"/>
+            <attDef ident="xml:space" mode="delete"/>
+            <attDef ident="sort" mode="delete"/>
+            <attDef ident="full" mode="delete"/>
+          </attList>
+        </elementSpec>
+        <elementSpec ident="textLang" mode="change">
+          <classes mode="change">
+            <memberOf key="att.global" mode="delete"/>
+            <memberOf key="att.global.source" mode="add"/>
+          </classes>
+          <content>
+            <empty/>
+          </content>
+          <attList>
+            <attDef ident="mainLang" mode="change" usage="req"/>
+            <attDef ident="source" mode="change" usage="req"/>
+          </attList>
+        </elementSpec>
+        <elementSpec ident="edition" mode="change">
+          <classes mode="change">
+            <memberOf key="att.global.analytic" mode="delete"/>
+            <memberOf key="att.global.change" mode="delete"/>
+            <memberOf key="att.global.facs" mode="delete"/>
+            <memberOf key="att.global.linking" mode="delete"/>
+            <memberOf key="att.global.rendition" mode="delete"/>
+            <memberOf key="att.global.responsibility" mode="delete"/>
+            <memberOf key="att.global.source" mode="delete"/>
+          </classes>
+          <content>
+            <elementRef key="date" minOccurs="0" maxOccurs="1"/>
+            <elementRef key="placeName" minOccurs="0" maxOccurs="unbounded"/>
+            <elementRef key="dimensions" minOccurs="0" maxOccurs="1"/>
+            <elementRef key="note" minOccurs="0" maxOccurs="1"/>
+            <elementRef key="idno" minOccurs="0" maxOccurs="unbounded"/>
+            <textNode/>
+          </content>
+          <constraintSpec ident="correctEditionID" scheme="schematron">
+            <constraint><s:rule context="tei:listBibl//tei:edition">
+                <s:assert test="matches(@xml:id, '^m_\d{5}_[a-z]$')">Eine Edition-ID muss wie folgt
+                  aufgebaut sein: "m_00000_a".</s:assert>
+              </s:rule>
+            </constraint>
+          </constraintSpec>
+          <constraintSpec ident="editionKeyBeginsWith" scheme="schematron">
+            <constraint><s:rule context="tei:listBibl//tei:edition">
+                <s:assert test="starts-with(@xml:id, ../data(@xml:id))">Editions-Key muss mit dem
+                  Key der Monographie beginnen.</s:assert>
+              </s:rule>
+            </constraint>
+          </constraintSpec>
+          <attList>
+            <attDef ident="ana" mode="delete"/>
+            <attDef ident="change" mode="delete"/>
+            <attDef ident="facs" mode="delete"/>
+            <attDef ident="corresp" mode="delete"/>
+            <attDef ident="synch" mode="delete"/>
+            <attDef ident="sameAs" mode="delete"/>
+            <attDef ident="copyOf" mode="delete"/>
+            <attDef ident="next" mode="delete"/>
+            <attDef ident="prev" mode="delete"/>
+            <attDef ident="exclude" mode="delete"/>
+            <attDef ident="select" mode="delete"/>
+            <attDef ident="rend" mode="delete"/>
+            <attDef ident="style" mode="delete"/>
+            <attDef ident="rendition" mode="delete"/>
+            <attDef ident="cert" mode="delete"/>
+            <attDef ident="resp" mode="delete"/>
+            <attDef ident="source" mode="delete"/>
+            <attDef ident="n" mode="delete"/>
+            <attDef ident="xml:lang" mode="delete"/>
+            <attDef ident="xml:base" mode="delete"/>
+            <attDef ident="xml:space" mode="delete"/>
+            <attDef ident="xml:id" mode="change" usage="rec"/>
+          </attList>
+        </elementSpec>
+        <elementSpec ident="date" mode="change">
+          <classes mode="change">
+            <memberOf key="att.global.source"/>
+            <memberOf key="att.canonical" mode="delete"/>
+            <memberOf key="att.global" mode="delete"/>
+            <memberOf key="att.typed" mode="delete"/>
+            <memberOf key="att.dimensions" mode="delete"/>
+            <memberOf key="att.editLike" mode="delete"/>
+          </classes>
+          <content>
+            <textNode/>
+          </content>
+          <constraintSpec ident="yearSpan" scheme="schematron">
+            <constraint><s:rule context="tei:bibl//tei:date">
+                <s:assert test="@when-iso &gt; 1499 and @when-iso &lt; 1800">Datum muss zwischen
+                  1500 und 1800 liegen.</s:assert>
+              </s:rule>
+            </constraint>
+          </constraintSpec>
+          <constraintSpec ident="addDateSource" scheme="schematron">
+            <constraint><s:rule context="tei:edition/tei:date">
+                <s:assert test="@source">Muss source-Attribut haben.</s:assert>
+              </s:rule>
+            </constraint>
+          </constraintSpec>
+          <attList>
+            <attDef ident="when-custom" mode="delete"/>
+            <attDef ident="notBefore-custom" mode="delete"/>
+            <attDef ident="notAfter-custom" mode="delete"/>
+            <attDef ident="from-custom" mode="delete"/>
+            <attDef ident="to-custom" mode="delete"/>
+            <attDef ident="datingPoint" mode="delete"/>
+            <attDef ident="datingMethod" mode="delete"/>
+            <attDef ident="when" mode="delete"/>
+            <attDef ident="notBefore" mode="delete"/>
+            <attDef ident="notAfter" mode="delete"/>
+            <attDef ident="from" mode="delete"/>
+            <attDef ident="to" mode="delete"/>
+            <attDef ident="notBefore-iso" mode="delete"/>
+            <attDef ident="notAfter-iso" mode="delete"/>
+            <attDef ident="from-iso" mode="delete"/>
+            <attDef ident="to-iso" mode="delete"/>
+            <attDef ident="when-iso" mode="change" usage="rec"/>
+            <attDef ident="calendar" mode="delete"/>
+            <attDef ident="period" mode="delete"/>
+          </attList>
+        </elementSpec>
+        <elementSpec ident="placeName" mode="change">
+          <classes mode="change">
+            <memberOf key="att.global.source"/>
+            <memberOf key="att.datable" mode="delete"/>
+            <memberOf key="att.global" mode="delete"/>
+            <memberOf key="att.typed" mode="delete"/>
+            <memberOf key="att.editLike" mode="delete"/>
+          </classes>
+          <content>
+            <empty/>
+          </content>
+          <constraintSpec ident="correctPlaceKey" scheme="schematron">
+            <constraint><s:rule context="tei:placeName[@key]">
+                <s:assert test="matches(@key, '^pl_\d{5}$')">Ein Key für einen Ort muss wie folgt
+                  aufgebaut sein: "pl_00000".</s:assert>
+              </s:rule>
+            </constraint>
+          </constraintSpec>
+          <constraintSpec ident="addPlaceSource" scheme="schematron">
+            <constraint><s:rule context="tei:edition/tei:placeName">
+                <s:assert test="@source">Muss source-Attribut haben.</s:assert>
+              </s:rule>
+            </constraint>
+          </constraintSpec>
+          <attList>
+            <attDef ident="ref" mode="delete"/>
+            <attDef ident="key" mode="change" usage="req"/>
+            <attDef ident="role" mode="delete"/>
+            <attDef ident="nymRef" mode="delete"/>
+            <attDef ident="full" mode="delete"/>
+            <attDef ident="sort" mode="delete"/>
+          </attList>
+        </elementSpec>
+        <elementSpec ident="dimensions" mode="change">
+          <classes mode="change">
+            <memberOf key="att.global.analytic" mode="delete"/>
+            <memberOf key="att.global.change" mode="delete"/>
+            <memberOf key="att.global.linking" mode="delete"/>
+            <memberOf key="att.global.rendition" mode="delete"/>
+            <memberOf key="att.global.responsibility" mode="delete"/>
+            <memberOf key="att.ranging" mode="delete"/>
+          </classes>
+          <content>
+            <elementRef key="dim" minOccurs="0" maxOccurs="1"/>
+            <elementRef key="height" minOccurs="0" maxOccurs="1"/>
+            <elementRef key="width" minOccurs="0" maxOccurs="1"/>
+          </content>
+          <constraintSpec ident="addDimensionsSource" scheme="schematron">
+            <constraint><s:rule context="tei:edition/tei:dimensions">
+                <s:assert test="@source">Muss source-Attribut haben.</s:assert>
+              </s:rule>
+            </constraint>
+          </constraintSpec>
+          <attList>
+            <attDef ident="xml:id" mode="delete"/>
+            <attDef ident="n" mode="delete"/>
+            <attDef ident="xml:lang" mode="delete"/>
+            <attDef ident="xml:base" mode="delete"/>
+            <attDef ident="xml:space" mode="delete"/>
+            <attDef ident="rend" mode="delete"/>
+            <attDef ident="cert" mode="delete"/>
+            <attDef ident="rendition" mode="delete"/>
+            <attDef ident="resp" mode="delete"/>
+            <attDef ident="style" mode="delete"/>
+            <attDef ident="atMost" mode="delete"/>
+            <attDef ident="atLeast" mode="delete"/>
+            <attDef ident="confidence" mode="delete"/>
+            <attDef ident="extent" mode="delete"/>
+            <attDef ident="max" mode="delete"/>
+            <attDef ident="min" mode="delete"/>
+            <attDef ident="precision" mode="delete"/>
+            <attDef ident="quantity" mode="delete"/>
+            <attDef ident="subtype" mode="delete"/>           
+          </attList>
+        </elementSpec>
+        <elementSpec ident="dim" mode="change">
+          <classes mode="change">
+            <memberOf key="att.dimensions" mode="delete"/>
+          </classes>
+          <content>
+            <empty/>
+          </content>
+          <attList>
+            <attDef ident="xml:id" mode="delete"/>
+            <attDef ident="xml:lang" mode="delete"/>
+            <attDef ident="xml:base" mode="delete"/>
+            <attDef ident="xml:space" mode="delete"/>
+            <attDef ident="ana" mode="delete"/>
+            <attDef ident="change" mode="delete"/>
+            <attDef ident="facs" mode="delete"/>
+            <attDef ident="corresp" mode="delete"/>
+            <attDef ident="synch" mode="delete"/>
+            <attDef ident="sameAs" mode="delete"/>
+            <attDef ident="copyOf" mode="delete"/>
+            <attDef ident="next" mode="delete"/>
+            <attDef ident="prev" mode="delete"/>
+            <attDef ident="exclude" mode="delete"/>
+            <attDef ident="select" mode="delete"/>
+            <attDef ident="rend" mode="delete"/>
+            <attDef ident="style" mode="delete"/>
+            <attDef ident="rendition" mode="delete"/>
+            <attDef ident="cert" mode="delete"/>
+            <attDef ident="resp" mode="delete"/>
+            <attDef ident="subtype" mode="delete"/>
+            <attDef ident="source" mode="delete"/>
+            <attDef ident="n" mode="change" usage="req">
+              <datatype>
+                <dataRef name="decimal"/>
+              </datatype>
+            </attDef>
+            <attDef ident="type" mode="change" usage="req">
+              <valList type="closed" mode="change">
+                <valItem mode="add" ident="folio"/>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+        <elementSpec ident="note" mode="change">
+          <classes mode="change">
+            <memberOf key="att.global" mode="delete"/>
+            <memberOf key="att.placement" mode="delete"/>
+            <memberOf key="att.ponting" mode="delete"/>
+            <memberOf key="att.written" mode="delete"/>
+            <memberOf key="att.anchoring" mode="delete"/>
+          </classes>
+          <constraintSpec ident="firstNote" scheme="schematron">
+            <constraint><s:rule context="tei:listBibl//tei:note[1]">
+              <s:assert test="@checkedFor">Erste Note muss @checkedFor haben.</s:assert>
+            </s:rule>
+            </constraint>
+          </constraintSpec>
+          <attList>
+            <attDef ident="anchored" mode="delete"/>
+            <attDef ident="evaluate" mode="delete"/>
+            <attDef ident="subtype" mode="delete"/>
+            <attDef ident="type" mode="delete"/>
+            <attDef ident="target" mode="delete"/>
+            <attDef ident="targetEnd" mode="delete"/>
+            <attDef ident="targetLang" mode="delete"/>
+            <attDef ident="checkedFor" mode="add">
+              <desc versionDate="2021-06-13" xml:lang="de">Welche Datenbanken kontrolliert wurden.</desc>
+              <datatype maxOccurs="unbounded">
+                <dataRef key="teidata.enumerated"/>
+              </datatype>
+              <valList mode="add" type="closed">
+                <valItem mode="add" ident="vd16"/>
+                <valItem mode="add" ident="vd17"/>
+                <valItem mode="add" ident="wikipedia"/>
+                <valItem mode="add" ident="vd18"/>
+                <valItem mode="add" ident="mdz"/>
+                <valItem mode="add" ident="google-books"/>
+                <valItem mode="add" ident="gnd"/>
+                <valItem mode="add" ident="wikidata"/>
+                <valItem mode="add" ident="uni-freiburg"/>
+                <valItem mode="add" ident="kvk"/>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+        <elementSpec ident="idno" mode="change">
+          <classes mode="change">
+            <memberOf key="att.datable" mode="delete"/>
+            <memberOf key="att.global" mode="delete"/>
+          </classes>
+          <attList>
+            <attDef ident="type" mode="change" usage="rec">
+              <valList type="closed" mode="change">
+                <valItem mode="delete" ident="ISBN"/>
+                <valItem mode="delete" ident="ISSN"/>
+                <valItem mode="delete" ident="DOI"/>
+                <valItem mode="delete" ident="URI"/>
+                <valItem mode="delete" ident="VIAF"/>
+                <valItem mode="delete" ident="ESTC"/>
+                <valItem mode="delete" ident="OCLC"/>
+                <valItem mode="add" ident="wikipedia"/>
+                <valItem mode="add" ident="vd16"/>
+                <valItem mode="add" ident="vd17"/>
+                <valItem mode="add" ident="vd18"/>
+                <valItem mode="add" ident="mdz"/>
+                <valItem mode="add" ident="google-books"/>
+                <valItem mode="add" ident="gnd"/>
+                <valItem mode="add" ident="wikidata"/>
+                <valItem mode="add" ident="uni-freiburg"/>
+                <valItem mode="add" ident="bsb"/>
+                <valItem mode="add" ident="K10plusPPN"/>
+                <valItem mode="add" ident="ppn"/>
+                <valItem mode="add" ident="scan"/>
+              </valList>
+            </attDef>
+            <attDef ident="subtype" mode="change" usage="rec">
+              <datatype maxOccurs="unbounded">
+                <dataRef key="teidata.word"/>
+              </datatype>
+              <valList type="closed" mode="change">
+                <valItem mode="add" ident="meta"/>
+                <valItem mode="add" ident="scan"/>
+              </valList>
+            </attDef>
+            <attDef ident="sortKey" mode="delete"/>
+          </attList>
+        </elementSpec>
+        <elementSpec ident="author" mode="change">
+          <classes mode="change">
+            <memberOf key="att.global.source"/>
+            <memberOf key="att.global" mode="delete"/>
+          </classes>
+          <content>
+            <empty/>
+          </content>
+          <constraintSpec ident="correctPersonKey" scheme="schematron">
+            <constraint><s:rule context="tei:author[@key]">
+                <s:assert test="matches(@key, '^pe_\d{5}$')">Ein Key für eine Person muss wie folgt
+                  aufgebaut sein: "pe_00000".</s:assert>
+              </s:rule>
+            </constraint>
+          </constraintSpec>
+          <attList>
+            <attDef ident="ref" mode="delete"/>
+            <attDef ident="nymRef" mode="delete"/>
+            <attDef ident="role" mode="delete"/>
+            <attDef ident="key" mode="change" usage="req"/>
+            <attDef ident="source" mode="change" usage="req"/>
+          </attList>
+        </elementSpec>
+        <elementSpec ident="biblScope" mode="change">
+          <content>
+            <empty/>
+          </content>        
+          <attList>
+            <attDef ident="from" mode="delete"/>
+            <attDef ident="to" mode="delete"/>
+            <attDef ident="xml:id" mode="delete"/>
+            <attDef ident="xml:lang" mode="delete"/>
+            <attDef ident="xml:base" mode="delete"/>
+            <attDef ident="xml:space" mode="delete"/>
+            <attDef ident="ana" mode="delete"/>
+            <attDef ident="change" mode="delete"/>
+            <attDef ident="facs" mode="delete"/>
+            <attDef ident="corresp" mode="delete"/>
+            <attDef ident="synch" mode="delete"/>
+            <attDef ident="sameAs" mode="delete"/>
+            <attDef ident="copyOf" mode="delete"/>
+            <attDef ident="next" mode="delete"/>
+            <attDef ident="prev" mode="delete"/>
+            <attDef ident="exclude" mode="delete"/>
+            <attDef ident="select" mode="delete"/>
+            <attDef ident="rend" mode="delete"/>
+            <attDef ident="style" mode="delete"/>
+            <attDef ident="rendition" mode="delete"/>
+            <attDef ident="cert" mode="delete"/>
+            <attDef ident="resp" mode="delete"/>
+            <attDef ident="source" mode="delete"/>
+            <attDef ident="n" mode="change" usage="req">
+              <datatype>
+                <dataRef name="decimal"/>
+              </datatype>
+            </attDef>
+            <attDef ident="unit" mode="change" usage="req">
+              <valList type="closed" mode="change">
+                <valItem mode="delete" ident="issue"/>
+                <valItem mode="delete" ident="page"/>
+                <valItem mode="delete" ident="line"/>
+                <valItem mode="delete" ident="chapter"/>
+                <valItem mode="delete" ident="part"/>
+                <valItem mode="delete" ident="column"/>
+                <valItem mode="delete" ident="entry"/>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+        <elementSpec ident="relatedItem" mode="change">
+          <classes mode="change">
+            <memberOf key="att.global" mode="delete"/>
+          </classes>
+          <attList>
+            <attDef ident="target" mode="change" usage="req"/>
+            <attDef ident="source" mode="delete"/>
+            <attDef ident="cert" mode="delete"/>
+            <attDef ident="resp" mode="delete"/>
+            <attDef ident="rend" mode="delete"/>
+            <attDef ident="style" mode="delete"/>
+            <attDef ident="rendition" mode="delete"/>
+            <attDef ident="corresp" mode="delete"/>
+            <attDef ident="synch" mode="delete"/>
+            <attDef ident="sameAs" mode="delete"/>
+            <attDef ident="copyOf" mode="delete"/>
+            <attDef ident="next" mode="delete"/>
+            <attDef ident="prev" mode="delete"/>
+            <attDef ident="exclude" mode="delete"/>
+            <attDef ident="select" mode="delete"/>
+            <attDef ident="facs" mode="delete"/>
+            <attDef ident="change" mode="delete"/>
+            <attDef ident="ana" mode="delete"/>
+            <attDef ident="subtype" mode="delete"/>
+            <attDef ident="type" mode="change" usage="req">
+              <valList type="closed" mode="change">
+                <valItem mode="add" ident="translatedFrom"/>
+                <valItem mode="add" ident="expressionOf"/>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+        <elementSpec ident="editor" mode="change">
+          <classes mode="change">
+            <memberOf key="att.global" mode="delete"/>
+          </classes>
+          <constraintSpec ident="correctPersonKey" scheme="schematron">
+            <constraint><s:rule context="tei:editor[@key]">
+              <s:assert test="matches(@key, '^pe_\d{5}$')">Ein Key für eine Person muss wie folgt
+                aufgebaut sein: "pe_00000".</s:assert>
+            </s:rule>
+            </constraint>
+          </constraintSpec>
+          <attList>
+            <attDef ident="ref" mode="delete"/>
+            <attDef ident="source" mode="delete"/>
+            <attDef ident="cert" mode="delete"/>
+            <attDef ident="resp" mode="delete"/>
+            <attDef ident="rend" mode="delete"/>
+            <attDef ident="style" mode="delete"/>
+            <attDef ident="rendition" mode="delete"/>
+            <attDef ident="corresp" mode="delete"/>
+            <attDef ident="synch" mode="delete"/>
+            <attDef ident="sameAs" mode="delete"/>
+            <attDef ident="copyOf" mode="delete"/>
+            <attDef ident="next" mode="delete"/>
+            <attDef ident="prev" mode="delete"/>
+            <attDef ident="exclude" mode="delete"/>
+            <attDef ident="select" mode="delete"/>
+            <attDef ident="facs" mode="delete"/>
+            <attDef ident="change" mode="delete"/>
+            <attDef ident="ana" mode="delete"/>
+            <attDef ident="nymRef" mode="delete"/>
+            <attDef ident="key" mode="change" usage="rec"/>
+            <attDef ident="role" mode="change" usage="rec">
+              <valList type="closed" mode="change">
+                <valItem mode="add" ident="translator"/>
+                <valItem mode="add" ident="editor"/>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+
+        <constraintSpec ident="textNotFilled" scheme="schematron">
+          <constraint><s:rule context="text() | @*">
+              <s:report test="matches(., '^XXX$')">Vergessen XXX zu ersetzen.</s:report>
+            </s:rule>
+          </constraint>
+        </constraintSpec>
+        
+        <constraintSpec ident="noDuplicateIdno" scheme="schematron">
+          <constraint><s:rule context="tei:idno[./text() = ./preceding::tei:idno/text()]">
+            <s:report test="exists(.)">Diese idno gibt es bereits.</s:report>
+          </s:rule>
+          </constraint>
+        </constraintSpec>
+        
+        <classSpec ident="att.global.source" type="atts" mode="change">
+          <attList>
+            <attDef ident="source" mode="change">
+              <desc versionDate="2021-01-17" xml:lang="de">Quelle der Information.</desc>
+              <datatype maxOccurs="unbounded">
+                <dataRef key="teidata.word"/>
+              </datatype>
+              <valList type="closed" mode="change">
+                <valItem mode="add" ident="catalog"/>
+                <valItem mode="add" ident="guessed"/>
+                <valItem mode="add" ident="auto"/>
+                <valItem mode="add" ident="mdz"/>
+                <valItem mode="add" ident="vd16"/>
+                <valItem mode="add" ident="vd17"/>
+                <valItem mode="add" ident="vd18"/>
+                <valItem mode="add" ident="uni-freiburg"/>
+                <valItem mode="add" ident="bsb"/> <!-- Bayrische Staatsbibliothek -->
+                <valItem mode="add" ident="kvk"/>
+                <valItem mode="add" ident="k10plus"/>
+                <valItem mode="add" ident="google-books"/>
+                <valItem mode="add" ident="hbz"/>
+                <valItem mode="add" ident="wikipedia"/>
+                <valItem mode="add" ident="gateway-bayern"/>
+              </valList>
+            </attDef>
+          </attList>
+        </classSpec>
+        
+        <classSpec ident="textLang" type="atts" mode="change">
+          <attList>
+            <attDef ident="mainLang" mode="change">
+              <valList type="closed" mode="change">
+                <valItem mode="add" ident="mul"/> <!-- Multilingual: Wenn ein Werk wirklich mehrere Hauptsprachen hat. Sie werden dann in @otherLang aufgezählt. -->
+                <valItem mode="add" ident="deu"/>
+                <valItem mode="add" ident="eng"/>
+                <valItem mode="add" ident="fre"/>
+                <valItem mode="add" ident="ita"/>
+                <valItem mode="add" ident="nld"/>
+                <valItem mode="add" ident="lat"/>
+                <valItem mode="add" ident="gre"/>
+                <valItem mode="add" ident="spa"/>
+                <valItem mode="add" ident="heb"/>
+                <valItem mode="add" ident="por"/>
+              </valList>
+            </attDef>
+            <attDef ident="otherLangs" mode="change">
+              <valList type="closed" mode="change">
+                <valItem mode="add" ident="deu"/>
+                <valItem mode="add" ident="eng"/>
+                <valItem mode="add" ident="fre"/>
+                <valItem mode="add" ident="ita"/>
+                <valItem mode="add" ident="nld"/>
+                <valItem mode="add" ident="lat"/>
+                <valItem mode="add" ident="gre"/>
+                <valItem mode="add" ident="spa"/>
+                <valItem mode="add" ident="heb"/>
+                <valItem mode="add" ident="por"/>
+              </valList>
+            </attDef>
+          </attList>
+        </classSpec>
+        
+        <classSpec ident="att.global" type="atts" mode="change">
+          <attList>
+            <attDef ident="xml:lang" mode="change">
+              <valList type="closed" mode="change">
+                <valItem mode="add" ident="deu"/>
+                <valItem mode="add" ident="eng"/>
+                <valItem mode="add" ident="fre"/>
+                <valItem mode="add" ident="ita"/>
+                <valItem mode="add" ident="nld"/>
+                <valItem mode="add" ident="lat"/>
+                <valItem mode="add" ident="gre"/>
+                <valItem mode="add" ident="spa"/>
+                <valItem mode="add" ident="heb"/>
+                <valItem mode="add" ident="por"/>
+              </valList>
+            </attDef>
+          </attList>
+        </classSpec>
+        
+        
+
+      </schemaSpec>
+    </body>
+  </text>
+</TEI>

@@ -1,0 +1,276 @@
+/* Struktur */
+
+#all-entities-row {
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+/* SUCHLEISTE */
+
+#search-row {
+    padding-top: 25px;
+}
+
+.advanced-search-row {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.advanced-search-row p {
+    position: relative;
+    top: 12px;
+}
+
+.search {
+    background-color: white;
+    padding: 4px;
+    border-radius: 10px;
+    border: black 2px solid;
+    max-height: 57px;
+}
+
+.search:hover {
+    box-shadow: 1px 1px 3px black;
+}
+
+.searchbar {
+    position: relative;
+    width: 100%
+}
+
+.searchbar input {
+    height: 45px;
+    border: none;
+    width: 100%;
+    padding-left: 18px;
+    padding-right: 90px;
+    font-size: 20px;
+}
+
+.searchbar input:focus {
+    border-color: none;
+    box-shadow: none;
+    outline: none
+}
+
+.searchbar button {
+    position: absolute;
+    right: 1px;
+    top: 0px;
+    border: none;
+    height: 45px;
+    background-color: var(--my-red);
+    color: #fff;
+    width: 70px;
+    border-radius: 4px
+}
+
+.searchbar button:hover {
+    background-color: white;
+    color: var(--my-red);
+    border: var(--my-red) solid 2px;
+}
+
+#switch-between-simple-and-advanced-search {
+    padding-top: 8px;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+#switch-between-simple-and-advanced-search-icon {
+    color: var(--my-red);
+    font-size: 40px;
+    margin-right: 7px;
+    float: left;
+}
+
+#switch-between-simple-and-advanced-search p {
+    line-height: 17px;
+    margin-top: 2px;
+}
+
+/* ADVANCED SEARCH */
+
+#advanced-search-col {
+    border: 2px black solid;
+    border-radius: 7px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
+#advanced-search-rows .col {
+    /*    border: 1px green solid;*/
+}
+
+#entity-type-row p {
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.form-check-input {
+    border-color: var(--my-red) !important;
+    background-color: var(--my-red) !important;
+}
+
+.advanced-search-rows .form-check {
+    margin-left: 1.1vw;
+}
+
+.advanced-search-rows .form-control {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+
+.advanced-filter-rows .row {
+    margin-bottom: 10px;
+}
+#erscheinungsdatum-filter p,
+#lebenszeit-filter p
+{
+    padding-top: 5px;
+}
+
+#sprache-filter p {
+    padding-top: 5px;
+}
+
+.in-catalog-checkbox {
+    width: 25px;
+    height: 25px;
+}
+
+.in-catalog-filter p {
+    padding-top: 2px;
+}
+
+.in-catalog-filter-button-col {
+    padding-left: 0px;
+}
+
+#big-search-button {
+    float: right;
+    border-radius: 3px;
+    font-size: 20px;
+}
+
+/* ÜBERSCHRIFT DER ERGEBNISSE */
+#head-row {
+    padding-top: 40px;
+    padding-bottom: 10px;
+}
+
+
+/* ERGEBNISSE */
+#results-col {
+    padding: 3px;
+}
+
+#results-col .card {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 15px;
+    box-shadow: 1px 1px 3px black;
+    padding: 10px 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#results-col .card-body {
+    padding: 0px;
+}
+
+.small-id {
+    font-style: italic;
+    font-size: 14px;
+    opacity: 0.5;
+}
+
+.series-title {
+    margin-top: 2px;
+    margin-bottom: 0;
+}
+
+.card-text {
+    margin-top: 2px;
+    margin-bottom: 0;
+}
+
+.hover-switch { /* Wird bei Hover hinzugefügt oder weggenommen*/
+    box-shadow: 1px 1px 6px black !important;
+}
+
+#results-col .result-type {
+    margin-bottom: 5px;
+}
+
+#results-col .card-title {
+    margin-bottom: 5px;
+    padding-bottom: 0.14em;
+}
+
+.limited-lines {
+    /*  Maximal 2 Zeilen:  */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+
+/* PAGING */
+
+.paging-nav {
+    margin-top: 25px;
+}
+
+.paging-nav a:hover {
+    color: var(--my-red);
+    background-color: white !important;
+    border: solid 1px var(--my-red) !Important;
+}
+
+.paging-nav a {
+    color: var(--my-red);
+}
+
+.paging-nav .active a {
+    color: white;
+    background-color: var(--my-red) !important;
+    border: solid 1px var(--my-red) !Important;
+}
+
+.paging-nav .active a:hover {
+    color: white;
+    background-color: var(--my-red) !important;
+    border: solid 1px var(--my-red) !Important;
+}
+
+@media (max-width:767px) {
+    .hide-when-smaller {visibility: collapse;}
+}
+
+@media (max-width:575px) {
+    .hide-when-smallest {visibility: collapse;}
+}
+
+
+
+
+.card .button-small {
+    float: right;
+}
+
+#sort-text-col p {
+    margin-top: 5px;
+}
+
+#sort-button-col {
+    padding: 0px;
+}
+
+/*#head-row .col {
+    border: green 1px solid;
+}*/

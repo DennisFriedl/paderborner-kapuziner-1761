@@ -1,0 +1,298 @@
+/* EDITION: */
+
+/* Seitenstruktur */
+#edition-container {
+    max-width: 100%;
+}
+
+.openseadragon-container {
+    height:100% !important;
+    min-height: 1000px !important;
+}
+
+#edition-row{
+    margin-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#edition-col {
+    font-size: 18px;
+    /*font-size: calc(12px + 0.3vw);*/
+}
+
+@media (max-width:767px) {
+    #edition-col {word-break: break-all;}
+}
+
+#edition-scan-image-col,
+#edition-col {
+    border: solid 1px black;
+}
+
+#edition-scan-image-col {
+    padding: 0px;
+}
+
+/* Seitennavigation */
+
+#pageInput {
+    width: 50px;
+    margin-right: 2px;
+    text-align: right;
+}
+
+.page-turner {
+    font-size: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/* Tabelle */
+
+#edition-col table {
+   margin-top: 35px;
+   border-collapse: collapse;
+   border: 2px solid var(--my-red);
+/*   vertical-align: bottom;*/
+}
+
+#edition-col th {
+    text-align: center;
+    vertical-align:bottom;
+    border: 2px solid var(--my-red);
+    font-weight: normal;
+}
+
+#edition-col td {
+    vertical-align: middle;
+    border-right: 2px solid var(--my-red);
+    border-left: 2px solid var(--my-red);
+    line-height: 0.85em;
+    margin: 20px;
+    margin-bottom: 3em;
+    padding-top: 0.320em;
+    padding-bottom: 0.320em;
+}
+
+
+#author-header, #book-header, #place-header, #year-header, #folio-header {width: max-content;}
+
+
+#category-letter {
+    font-size: 33px;
+    font-weight: 600;
+    position: relative; 
+    bottom: 32px; 
+    text-align: center;
+    margin-bottom: -35px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0;
+    height: 0;
+   
+    /*  Kreis: */
+    width: 59px;
+    height: 59px;
+    border: 2px solid var(--my-red);
+    background: white; 
+    border-radius: 30px;
+    line-height: 55px;
+}
+
+#category-title {
+    font-size: 33px;
+    font-weight: 600;
+    color: var(--my-red);
+    margin-bottom: 18px;
+}
+
+/* Innerhalb der Tabelle */
+
+.entity-link {
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+    text-decoration-thickness: 2px;
+    /*text-decoration-color: var(--my-red);*/
+    
+    cursor: pointer;
+}
+
+[data-ref^="person.html"] {
+    text-decoration-color: rgb(0, 204, 0);
+}
+[data-ref^="serie.html"] {
+    text-decoration-color: rgb(204, 102, 0);
+}
+[data-ref^="auflage.html"] {
+    text-decoration-color: rgb(153, 0, 0);
+}
+[data-ref^="ort.html"] {
+    text-decoration-color: rgb(76, 0, 153);
+}
+
+/* Hover über Entitäten */
+[data-ref^="person.html"]:hover {
+    background: rgba(0, 204, 0, .20);
+}
+[data-ref^="serie.html"]:hover {
+    background: rgba(204, 102, 0, .20);
+}
+[data-ref^="auflage.html"]:hover {
+    background: rgba(153, 0, 0, .20);
+}
+[data-ref^="ort.html"]:hover {
+    background: rgba(76, 0, 153, .20);
+}
+
+.del {
+    text-decoration: line-through;   
+}
+
+span[data-gap]::before {
+  font-weight: bold;
+  color: navy;
+  content: "[..."attr(data-gap)"]";
+}
+
+*[data-place="left"]{
+    float: left;
+}
+
+*[data-place="right"]{
+    float: right;
+}
+
+.expan {
+    display: none;
+}
+
+
+
+*[data-rend="font-size(biggest)"]{
+    font-size: 2.5em;
+}
+
+.titlepage *[data-rend="font-size(biggest)"]{
+    line-height: 1em;
+}
+
+*[data-rend="font-size(big)"]{
+    font-size: 1.6em;
+}
+
+*[data-rend="font-size(small)"]{
+    font-size: 0.9em;
+    line-height: 0.97em;
+}
+
+.titlepage {
+    margin-top: 70px;
+    margin-bottom: 100px;
+    text-align: center;
+}
+
+.titlepage *[data-rend="font-size(small)"]{
+    line-height: 0.97em;
+}
+
+*[data-hand="hand2"]:not(.del),
+*[data-hand="hand3"]:not(.del),
+*[data-hand="hand4"]:not(.del){
+    font-style: italic;
+    font-weight: 600;
+}
+
+*[data-hand="hand2"]:not(.del),
+*[data-hand="hand4"]:not(.del)
+{
+    color: #492d0c;
+}
+
+.del[data-hand="hand2"],
+.del[data-hand="hand4"]
+{
+    text-decoration-color: #492d0c;
+}
+
+*[data-hand="hand3"]:not(.del){
+    color: grey;
+}
+
+.del[data-hand="hand3"]
+{
+    text-decoration-color: grey;
+}
+
+.figure {
+    text-align: center;
+    width: 100%;
+    margin-top: 400px;
+    margin-bottom: 200px;
+}
+
+div.poem {
+    text-align: center;
+    margin-top: 200px;
+    margin-bottom: 250px;
+}
+
+p.line {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+
+#struktur-button {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.structure-name {
+    margin-right: 3em;
+}
+
+.structure-page {
+    float: right;
+}
+
+
+/* DROPDOWN */
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  white-space: nowrap;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 2px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: var(--my-red);
+    color: white;
+}
+
+/* Button, wenn das Menü aufegklappt ist */
+.dropdown:hover .dropbtn {
+    background-color: white;
+    color: var(--my-red);
+   }
+

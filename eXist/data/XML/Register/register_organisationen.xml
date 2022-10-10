@@ -1,0 +1,393 @@
+<?xml-model href="../Schemata/Register_Organisationen/out/schema_register_organisationen.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../Schemata/Register_Organisationen/out/schema_register_organisationen.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader xml:lang="deu">
+      <fileDesc>
+         <titleStmt>
+            <title>Organisationsregister der digitalen Quellenedition "Der Bibliothekskatalog der Paderborner Kapuziner von 1761"</title>
+            <editor>Dennis Friedl</editor>
+         </titleStmt>
+         <editionStmt>
+            <edition>Abgabe als Masterarbeit im Jahr 2022</edition>
+         </editionStmt>
+         <publicationStmt>
+            <publisher>Dennis Friedl</publisher>
+            <date>2022</date>
+         </publicationStmt>
+         <sourceDesc>
+            <biblFull>
+               <fileDesc>
+                  <titleStmt>
+                     <title>Der Bibliothekskatalog der Paderborner Kapuziner von 1761 als digitale Quellenedition</title>
+                     <editor>Dennis Friedl</editor>
+                  </titleStmt>
+                  <editionStmt>
+                     <edition>Abgabe als Masterarbeit im Jahr 2022</edition>
+                  </editionStmt>
+                  <publicationStmt>
+                     <publisher>Dennis Friedl</publisher>
+                     <date>2022</date>
+                  </publicationStmt>
+                  <sourceDesc>
+                     <bibl>P. Julian aus Steele: Catalogus Librorum Bibliothecae Paderbornensis F.F. Minorum S. Francisci Capucinorum / Revisæ, Renovatæ, &amp; in Ordinem Digestæ, Curâ A:V:P: Jualiani Steelensis Lectoris Emeriti, &amp; Conventûs hujus p.t. Guardiani Collectus &amp; Conscriptus. Paderborn 1761.</bibl>
+                     <msDesc>            
+                        <msIdentifier>
+                           <settlement>Altötting</settlement>
+                           <repository>Archiv der Deutschen Kapuzinerprovinz</repository>
+                           <idno>PC Sp I, 7</idno>
+                           <idno type="scan">https://digital.ub.uni-paderborn.de/eab/content/titleinfo/6084969</idno>
+                        </msIdentifier>             
+                        <physDesc>
+                           <objectDesc form="codex">
+                              <supportDesc>
+                                 <support>Papier mit Lederdeckel</support>
+                                 <extent>
+                                    <measure unit="pages" quantity="314"/>
+                                    <dimensions scope="all" type="page" unit="cm">
+                                       <height>31,5</height>
+                                       <width>20</width>
+                                    </dimensions>
+                                 </extent>
+                              </supportDesc>
+                           </objectDesc>
+                        </physDesc>
+                     </msDesc>
+                  </sourceDesc>
+               </fileDesc>
+            </biblFull>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <text>
+      <body>
+
+         <listOrg>
+
+            <org xml:id="org_00003" checkedFor="gnd wikidata">
+               <orgName>
+                  <name source="gnd">Benediktiner</name>
+                  <addName source="catalog" xml:lang="lat">Ordo Sancti Benedicti</addName>
+                  <addName source="catalog" xml:lang="lat">O: S: Ben:</addName>
+                  <addName source="catalog" xml:lang="lat">Ord: S. Bened:</addName>
+                  <addName source="catalog" xml:lang="lat">Ordinis S. Bened.</addName>
+                  <addName source="catalog" xml:lang="lat">Ord. S. Ben:</addName>
+                  <addName source="catalog" xml:lang="lat">O.S.B.</addName>
+               </orgName>
+               <idno type="gnd">25880-5</idno>
+               <idno type="wikidata">Q131132</idno>
+               <idno type="viaf">247149196253174790123</idno>
+            </org>
+            <org xml:id="org_00005" checkedFor="gnd wikidata">
+               <orgName>
+                  <name source="wikipedia">Oratorianer</name>
+                  <addName source="catalog" xml:lang="lat">Cong: Orat:</addName>
+               </orgName>
+               <idno type="gnd">1016532-0</idno>
+               <idno type="wikidata">Q247132</idno>
+               <idno type="viaf">122561858</idno>
+            </org>
+            <org xml:id="org_00006" checkedFor="gnd wikidata">
+               <orgName>
+                  <name source="wikipedia">Dominikaner</name>
+                  <addName source="catalog" xml:lang="lat">Ord: Præd:</addName>
+                  <addName source="catalog" xml:lang="lat">Ord. Præd.</addName>
+                  <addName source="catalog" xml:lang="lat">O. P.</addName>
+                  <addName source="catalog" xml:lang="lat">Ordo Prædicatorum</addName>
+               </orgName>
+               <idno type="gnd">1008640-7</idno>
+               <idno type="wikidata">Q131479</idno>
+               <idno type="viaf">140291092</idno>
+            </org>
+            <org xml:id="org_00007" checkedFor="gnd wikidata">
+               <orgName>
+                  <name source="wikipedia">Jesuiten</name>
+                  <addName source="catalog" xml:lang="lat">S. J.</addName>
+               </orgName>
+               <idno type="gnd">80092-2</idno>
+               <idno type="wikidata">Q36380</idno>
+               <idno type="viaf">125204407</idno>
+            </org>
+            <org xml:id="org_00008" checkedFor="gnd wikidata">
+               <orgName>
+                  <name source="gnd">Augustiner-Eremiten </name>
+                  <addName source="catalog" xml:lang="lat">Ord: Eremit: S.A.</addName>
+               </orgName>
+               <idno type="gnd">1008455-1</idno>
+               <idno type="wikidata">Q29075</idno>
+               <idno type="viaf">141145424509986830629</idno>
+            </org>
+            <org xml:id="org_00010">
+               <orgName>
+                  <name source="wikipedia">Franziskaner</name>
+                  <addName source="catalog" xml:lang="lat">St. Obs.</addName>
+                  <addName source="catalog" xml:lang="lat">Ord. St. Obs.</addName>
+                  <addName source="catalog" xml:lang="lat">S. O.</addName>
+                  <addName source="catalog" xml:lang="lat">St. O.</addName>
+               </orgName>
+               <idno type="gnd">1008636-5</idno>
+               <idno type="wikidata">Q913972</idno>
+            </org>
+            <org xml:id="org_00011" checkedFor="gnd wikidata">
+               <orgName>
+                  <name source="gnd">Kapuziner</name>
+                  <addName source="catalog" xml:lang="lat">Ord Cap</addName>
+                  <addName source="catalog" xml:lang="lat">Ord. Cap.</addName>
+                  <addName source="catalog" xml:lang="lat">Ord Cap. Dftr. Grlis</addName>
+                  <addName source="catalog" xml:lang="lat">Capucini</addName>
+                  <addName source="catalog" xml:lang="lat">Cap.</addName>
+                  <addName source="catalog" xml:lang="lat">Cap</addName>
+                  <addName source="catalog" xml:lang="lat">Capuc.</addName>
+                  <addName source="catalog" xml:lang="lat">Capucin.</addName>
+                  <addName source="catalog" xml:lang="lat">O. M. Cap.</addName>
+                  <addName source="catalog" xml:lang="lat">Capuc:</addName>
+                  <addName source="catalog" xml:lang="lat">Cap:</addName>
+                  <addName source="catalog" xml:lang="lat">Capucin</addName>
+                  <addName source="catalog" xml:lang="lat">Capuc</addName>
+                  <addName source="catalog" xml:lang="lat">O. M. Cap</addName>
+               </orgName>
+               <idno type="gnd">1012705-7</idno>
+               <idno type="wikidata">Q124862</idno>
+               <idno type="viaf">158900335</idno>
+            </org>
+            <org xml:id="org_00012" checkedFor="gnd wikidata">
+               <orgName>
+                  <name source="wikipedia">Franziskaner-Rekollekten</name>
+                  <addName source="catalog" xml:lang="lat">Ord: F. F. Recollect:</addName>
+                  <addName source="catalog" xml:lang="lat">Ord: S. Tr. Recollect:</addName>
+               </orgName>
+               <idno type="gnd">4510788-9</idno>
+               <idno type="wikidata">Q2456641</idno>
+               <idno type="viaf">244728762</idno>
+            </org>
+            <org xml:id="org_00020" checkedFor="gnd wikidata">
+               <orgName>
+                  <name source="wikipedia">Minoriten</name>
+                  <addName source="catalog" xml:lang="lat">Ord. Min. Conv.</addName>
+               </orgName>
+               <idno type="gnd">1016737-7</idno>
+               <idno type="wikidata">Q692799</idno>
+               <idno type="viaf">137834055</idno>
+            </org>     
+            <org xml:id="org_00027" checkedFor="gnd wikidata">
+               <orgName>
+                  <name source="gnd">Karmeliten</name>
+                  <addName source="catalog" xml:lang="lat">Ord. Carm.</addName>
+               </orgName>
+               <idno type="gnd">1018585-9</idno>
+               <idno type="wikidata">Q186277</idno>
+               <idno type="viaf">168672016</idno>
+            </org>                      
+            <org xml:id="org_00026">
+               <orgName>
+                  <name source="wikipedia">Augustiner-Rekollekten</name>
+                  <addName source="catalog" xml:lang="lat">Ord. Recoll.</addName>
+               </orgName>
+               <idno type="wikidata">Q2067827</idno>
+               <idno type="gnd">1008632-8</idno>
+               <idno type="viaf">156563498</idno>
+            </org>
+            <org xml:id="org_00034" checkedFor="gnd wikidata">
+               <orgName>
+                  <name source="wikipedia">Augustiner-Chorherren</name>
+                  <addName source="catalog" xml:lang="lat">Can. Reg. S. Aug.</addName>
+               </orgName>
+               <idno type="gnd">2180420-5</idno>
+               <idno type="wikidata">Q1270388</idno>
+               <idno type="viaf">234031250</idno>
+            </org>                              
+            <org xml:id="org_00009" checkedFor="gnd wikidata">
+               <orgName>
+                  <name source="gnd">Unbeschuhte Karmeliten</name>
+                  <addName source="catalog" xml:lang="lat">Carm.</addName>
+               </orgName>
+               <idno type="gnd">1008634-1</idno>
+               <idno type="wikidata">Q1135659</idno>
+               <idno type="viaf">166147653</idno>
+            </org>           
+            <org xml:id="org_00015" checkedFor="gnd wikidata">
+               <orgName>
+                  <name source="gnd">Zisterzienser</name>
+               </orgName>
+               <idno type="gnd">1008453-8</idno>
+               <idno type="wikidata">Q166861</idno>
+               <idno type="viaf">133609618</idno>
+            </org>
+            <org xml:id="org_00016" checkedFor="gnd wikidata">
+               <orgName>
+                  <name source="gnd">Kartäuser</name>
+               </orgName>
+               <idno type="gnd">1017943-4</idno>
+               <idno type="wikidata">Q220979</idno>
+               <idno type="viaf">172382854</idno>
+            </org>
+            <org xml:id="org_00017" checkedFor="wikidata">
+               <orgName>
+                  <name source="wikidata">Augustiner-Chorherren vom Heiligen Victor</name>
+               </orgName>
+               <idno type="wikidata">Q2603431</idno>
+               <idno type="viaf">138431895</idno>
+            </org>
+            <org xml:id="org_00018" checkedFor="wikidata">
+               <orgName>
+                  <name source="wikidata">Augustiner</name>
+               </orgName>
+               <idno type="wikidata">Q214528</idno>
+            </org>
+            <org xml:id="org_00019" checkedFor="gnd wikidata">
+               <orgName>
+                  <name source="gnd">Barnabiten</name>
+               </orgName>
+               <idno type="gnd">4207780-1</idno>
+               <idno type="wikidata">Q620456</idno>
+               <idno type="viaf">249032623</idno>
+            </org>                             
+            <org xml:id="org_00028" checkedFor="wikidata gnd">
+               <orgName>
+                  <name source="gnd">Ordre de la bienheureuse Vierge Marie du Mont Carmel</name>
+               </orgName>
+               <idno type="wikidata">Q2939649</idno>
+               <idno type="viaf">129636543</idno>
+               <idno type="gnd">1086616731</idno>
+            </org>
+            <org xml:id="org_00029" checkedFor="gnd wikidata">
+               <orgName>
+                  <name source="gnd">Theatiner</name>
+               </orgName>
+               <idno type="gnd">1035017-2</idno>
+               <idno type="wikidata">Q1414924</idno>
+               <idno type="viaf">131983531</idno>
+            </org>                                                                           
+            <org xml:id="org_00039" checkedFor="wikidata gnd">
+               <orgName>
+                  <name source="wikidata">Trinitarierorden</name>
+               </orgName>
+               <idno type="wikidata">Q917518</idno>
+               <idno type="viaf">147363654</idno>
+               <idno type="gnd">1015510-7</idno>
+            </org>
+            <org xml:id="org_00040" checkedFor="wikidata gnd">
+               <orgName>
+                  <name source="wikidata">Hieronymiten</name>
+               </orgName>
+               <idno type="wikidata">Q1474312</idno>
+               <idno type="viaf">146748747</idno>
+               <idno type="gnd">16325580-5</idno>
+            </org>
+            <org xml:id="org_00041" checkedFor="gnd wikidata">
+               <orgName>
+                  <name source="gnd">Augustiner-Barfüßer</name>
+               </orgName>
+               <idno type="gnd">4689222-9</idno>
+               <idno type="wikidata">Q768415</idno>
+               <idno type="viaf">240550849</idno>
+            </org>           
+            <org xml:id="org_00043" checkedFor="gnd">
+               <orgName>
+                  <name source="gnd">Franziskanerinnen</name>
+               </orgName>
+               <idno type="gnd">4018168-6</idno>
+               <idno type="viaf">242967176</idno>
+            </org>
+            <org xml:id="org_00044" checkedFor="wikidata gnd">
+               <orgName>
+                  <name source="wikidata">Konzeptionistinnen</name>
+               </orgName>
+               <idno type="wikidata">Q175344</idno>
+               <idno type="viaf">244275204</idno>
+               <idno type="gnd">4471261-3</idno>
+            </org>
+            <org xml:id="org_00045" checkedFor="wikidata">
+               <orgName>
+                  <name source="wikidata">Cölestinerinnen</name>
+               </orgName>
+               <idno type="wikidata">Q970531</idno>
+               <idno type="viaf">255291030</idno>
+            </org>         
+            <org xml:id="org_00047" checkedFor="wikidata gnd">
+               <orgName>
+                  <name source="wikidata">Feuillanten</name>
+               </orgName>
+               <idno type="wikidata">Q1410147</idno>
+               <idno type="viaf">265929342</idno>
+               <idno type="gnd">7541003-5</idno>
+            </org>                                                 
+            <org xml:id="org_00053" checkedFor="gnd wikidata">
+               <orgName>
+                  <name source="gnd">Observanten</name>
+               </orgName>
+               <idno type="gnd">4224957-0</idno>
+               <idno type="wikidata">Q87991634</idno>
+               <idno type="viaf">250229912</idno>
+            </org>                     
+            <org xml:id="org_00056" checkedFor="gnd">
+               <orgName>
+                  <name source="gnd">Französisches Oratorium</name>
+               </orgName>
+               <idno type="gnd">4206338-3</idno>
+               <idno type="viaf">308178483</idno>
+            </org>                      
+            <org xml:id="org_00059" checkedFor="wikidata gnd">
+               <orgName>
+                  <name source="wikidata">Kamaldulenser</name>
+               </orgName>
+               <idno type="wikidata">Q591832</idno>
+               <idno type="viaf">133397525</idno>
+               <idno type="gnd">5285601-X</idno>
+            </org>          
+            <org xml:id="org_00061" checkedFor="gnd wikidata">
+               <orgName>
+                  <name source="gnd">Augustinerchorherren. Lateranensische Kongregation</name>
+               </orgName>
+               <idno type="gnd">16105962-4</idno>
+               <idno type="wikidata">Q635046</idno>
+               <idno type="viaf">124074257</idno>
+            </org>
+            <org xml:id="org_00062" checkedFor="gnd">
+               <orgName>
+                  <name source="gnd">Doktrinarier</name>
+               </orgName>
+               <idno type="gnd">1164190377</idno>
+               <idno type="viaf">5388153411884541700001</idno>
+            </org>          
+            <org xml:id="org_00064" checkedFor="wikidata">
+               <orgName>
+                  <name source="wikidata">Ordo Fratris Menoris Regularis Observantia</name>
+               </orgName>
+               <idno type="wikidata">Q2512282</idno>
+            </org>                                                                                                                                                                                                                         
+            <org xml:id="org_00087" checkedFor="gnd wikidata">
+               <orgName>
+                  <name source="gnd">Prämonstratenser</name>
+               </orgName>
+               <idno type="gnd">1009039-3</idno>
+               <idno type="wikidata">Q339332</idno>
+               <idno type="viaf">127399197</idno>
+            </org>                    
+            <org xml:id="org_00091" checkedFor="wikidata gnd">
+               <orgName>
+                  <name source="wikidata">Basilianer des hl. Josaphat</name>
+               </orgName>
+               <idno type="wikidata">Q7319129</idno>
+               <idno type="viaf">130727963</idno>
+               <idno type="gnd">1009000-9</idno>
+            </org>         
+            <org xml:id="org_00093" checkedFor="gnd wikidata">
+               <orgName>
+                  <name source="gnd">Minimen</name>
+               </orgName>
+               <idno type="gnd">1009038-1</idno>
+               <idno type="wikidata">Q1367736</idno>
+               <idno type="viaf">152673485</idno>
+            </org>                     
+            <org xml:id="org_00096" checkedFor="gnd wikidata">
+               <orgName>
+                  <name source="gnd">Deutscher Orden</name>
+               </orgName>
+               <idno type="gnd">1017688-3</idno>
+               <idno type="wikidata">Q48189</idno>
+               <idno type="viaf">160066383</idno>
+            </org>                                                                                                                                
+         </listOrg>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,42 @@
+<!--var xhr = new XMLHttpRequest();
+var baseURL = "http://localhost:8080/exist/restxq/";
+
+xhr.onreadystatechange = function(){
+if (xhr.readyState == 4){
+if (xhr.status == 200){
+//console.log(xhr.responseText);
+document.getElementById("booksTableDiv").innerHTML = xhr.responseText;
+}
+}
+};
+
+xhr.open("get", baseURL + "allBooks");
+xhr.send();--><div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+    <div class="container-fluid" id="main-banner">
+        <div class="row">
+            <div class="col col-md-6 col-12">
+                <img src="../resources/images/titelblatt2.jpg" alt="Titelblatt-Banner" id="titelblatt-image"/>
+            </div>
+            <div class="col col-md-6 col-12 px-4" id="titelblatt-text-box">
+                <p><span class="text-small">Der</span> <span class="text-big">Bibliothekskatalog</span> <br/><span class="text-small">der</span> <span class="text-big">Paderborner Kapuziner</span> <br/><span class="text-middle">von 1761</span> </p>
+                <a class="button button-big" href="projektbeschreibung.html">Das Projekt</a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col col-md-6 col-12 mb-4" id="area1">
+                <h1>Die Edition</h1>
+                <p>In der synoptischen Darstellung können Faksimile und diplomatische Edition des Paderborner Kapuzinerkataloges nebeneinandergelegt betrachtet werden. Neben dem schnellen und effektiven Bewegen innerhalb der Katalogsstruktur erlaubt die parallele Ansicht sowohl das Hinzuziehen des materiellen Erscheinungsbildes, das dank einer hohen Auflösung bis auf kleine Details vergrößert werden kann, als auch der benutzernahen Transkription, die auf einen Blick verglichen und kontrolliert werden kann. Die Verknüpfung mit zugehörigen Datenbankeinträgen ermöglicht die Weiterleitung auf Seiten, auf denen sich die Nutzerinnen und Nutzer anhand von Metadaten näher über eine Entität informieren können.</p>
+                <a class="button button-big" href="edition.html?page=1">Zur Edition <i class="fas fa-file-alt"/></a>
+            </div>
+            <div class="col col-md-6 col-12" id="area2">
+                <h1>Die Datenbank</h1>
+                <p>Die Datenbank setzt sich in erster Linie aus modellierten Daten zusammen, die durch die Auszeichnung von Entitäten (Personen, Orte, Organisationen und Werke) aus dem Katalog selbst extrahiert werden konnten. Wenn möglich, wurden diese Entitäten anschließend identifiziert und mit externen Datenbanken (etwa die GND oder Wikidata) verknüpft. Durch die Verknüpfung war es möglich, automatisiert bereits vorhandene Metadaten in die eigene Edition zu importieren und so die Datenbank mit Wissen zu erweitern, das aus dem Katalog allein nicht hervorgeht. Die Datenbank kann durch mehrere Suchfelder durchsucht und die Ergebnisse können mit Filtereinstellungen angepasst werden.</p>
+                <a class="button button-big" href="datenbank.html">Zur Datenbank <i class="fas fa-database"/></a>
+            </div>
+        </div>
+    </div>
+</div>

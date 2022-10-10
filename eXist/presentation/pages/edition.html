@@ -1,0 +1,56 @@
+<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+    <div class="container" id="edition-container">
+        <div class="row">
+            <h1>Die Edition</h1>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col col-auto d-flex justify-content-center">
+                <table>
+                    <tr>
+                        <td><a class="icon-button page-turner" data-step="-1" onclick="turnEditionPage(this)"><i class="fas fa-chevron-left"/></a></td>
+                        <td><input type="text" onkeypress="return isNumberKey(event)" id="pageInput"/> / 367</td>
+                        <td><a class="icon-button page-turner" data-step="1" onclick="turnEditionPage(this)"><i class="fas fa-chevron-right"/></a></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col col-auto">
+                <div class="dropdown" id="struktur-button">
+                    <button class="button button-small dropbtn"><i class="fas fa-caret-down"/> Struktur</button>
+                    <div class="dropdown-content">
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">9</span><span class="structure-name">A – Sacra Scriptura</span></a>
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">19</span><span class="structure-name">B – Sancti Patres</span></a>
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">25</span><span class="structure-name">C – Scriptores Ecclesiastici</span></a>
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">29</span><span class="structure-name">D – Scriptores Ordinum Religiosorum</span></a>
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">37</span><span class="structure-name">E – Expositores Sacræ Scripturæ</span></a>
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">49</span><span class="structure-name">F – Libri Ascetici</span></a>
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">81</span><span class="structure-name">G – Canonistæ</span></a>
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">95</span><span class="structure-name">H – Concilia &amp; Canones</span></a>
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">101</span><span class="structure-name">I – Theologi</span></a>
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">133</span><span class="structure-name">K – Controversistæ</span></a>
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">159</span><span class="structure-name">L – Philosophi</span></a>
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">169</span><span class="structure-name">M – Juristæ</span></a>
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">181</span><span class="structure-name">N – Concionatores</span></a>
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">241</span><span class="structure-name">O – Catechistæ</span></a>
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">244</span><span class="structure-name">O – Libri Infirmorum</span></a>
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">246</span><span class="structure-name">O – Libri Exorcismorum</span></a>
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">247</span><span class="structure-name">P – Historici Sacri</span></a>
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">255</span><span class="structure-name">Q – Historici Profani</span></a>
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">267</span><span class="structure-name">R – Miscellanei</span></a>
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">279</span><span class="structure-name">S – Rhetores</span></a>
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">285</span><span class="structure-name">T – Pöetæ</span></a>
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">291</span><span class="structure-name">U – Libri Gallici</span></a>
+                        <a onclick="jumpToEditionPageWithStructure(this)"><span class="structure-page">299</span><span class="structure-name">W – Libri Italici, Hispanici &amp; Belgici &amp;c.</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col box-test d-flex justify-content-center">[<span id="content-page-indicator"/>]</div>
+        </div>
+        <div class="row" id="edition-row">
+            <div class="col col-xl-6 col-12" id="edition-scan-image-col">
+                 </div>
+            <div class="col col-xl-6 col-12" id="edition-col" data-template="app:XMLtoHTML"> </div>
+        </div>
+    </div>
+</div>

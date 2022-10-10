@@ -1,0 +1,52 @@
+<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+    <div class="container">
+        <div class="row">
+            <h1>Editionsrichtlinien</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-xl-8 col-md-10 col-12">
+                <p>Die Transkription des Bibliothekskataloges von 1761 erfolgte in Hinblick einer diplomatischen Ausgabe, d. h. die Übernahme der Zeichen erfolgte möglichst der Vorlage entsprechend. Weder wurden Fehler korrigiert noch sprachliche Anpassungen an etwa die heutige Rechtschreibung vorgenommen. Ausnahmen davon stellen dar:</p>
+                <ul>
+                    <li>Abkürzungszeichen am Wortende, etwa für -que oder die Deklinationsendungen -us und -um wurden bei Eindeutigkeit unkommentiert aufgelöst und nicht als Abkürzung ausgezeichnet.</li>
+                    <li>Striche über Wörtern, die Abkürzungen anzeigen, etwa so genannte Geminationsstriche zur Markierung von Buchstabenverdoppelungen, wurden nicht übernommen. Stattdessen wurden Abkürzungen mit dem Element &lt;abbr&gt; ausgezeichnet.</li>
+                    <li>Das lange s „ſ“ wurde der Einfachheit halber durch ein rundes s „s“ ersetzt.</li>
+                </ul>
+                <p>Mit folgenden Zeichen wurde versucht, den Phänomenen innerhalb des Kataloges zu entsprechen:</p>
+                <ul>
+                    <li>Doppelte Bindestriche wurden als Gleichheitszeichen „=“ übernommen.</li>
+                    <li>Doppelpunkte, die Abkürzungen markieren, wurden als Doppelpunkt „:“ übernommen.</li>
+                    <li>Das kaufmännische Und-Zeichen „&amp;“ wurde als solches übernommen und nicht als „et“ aufgelöst. Das gilt auch innerhalb von Wörtern, etwa bei „&amp;c.“ für „etc.“.</li>
+                    <li>Die Ligaturen aus „a“ und „e“ bzw. „o“ und „e“ wurden mit den Zeichen „Æ“ und „æ“ bzw. „Œ“ und „œ“ verwirklicht.</li>
+                </ul>
+                <p>Die anschließende Auszeichnung mit TEI erfolgte nach folgenden Richtlinien:</p>
+                <ul>
+                    <li>In der Auszeichnung wurde versucht, der Textsorte als strukturierter Bibliothekskatalog Ausdruck zu verleihen. Um das Layout, den Aufbau des Kataloges in seiner Tabellenform zu bewahren, beruhen alle Seiten des eigentlichen Bücherverzeichnisses in ihrer Grundstruktur auf dem Element &lt;table&gt;. Eine Tabelle besteht jeweils aus einer Tabellenüberschrift &lt;head&gt;, die den jeweiligen Kategorienbuchstaben von A bis W beinhaltet, und mindestens einer Reihe &lt;row&gt;. Die erste &lt;row&gt; stellt dabei stets mit ihren fünf Zellen &lt;cell&gt; die Überschriften der fünf Spalten dar, während jede weitere Reihe und ihre Zellen den nachfolgenden Inhalt in ihren jeweiligen Spalten strukturiert. Eine Reihe &lt;row&gt; orientiert sich dabei der effektiveren Datenextraktion wegen nicht zwangsweise an einer Zeile im Dokument, sondern stellt eine Einheit innerhalb der Verzeichnislogik des Kataloges dar. Ein Buchtitel etwa, der sich aufgrund seiner Länge auf zwei Zeilen
+                        erstreckt, wurde trotzdem nur in einer &lt;row&gt; auszeichnet. Zeilenumbrüche wurden nicht markiert und können bei Bedarf im Faksimile nachverfolgt werden.</li>
+                    <li>Von dieser Tabellenstruktur weichen die einleitenden Paratexte ab. Dabei wurden zusammenhängende Paragraphen mit dem Element &lt;p&gt; strukturiert, wobei ausnahmsweise auch Zeilenumbrüche mit dem Element &lt;/lb&gt; markiert wurden. Das eingeklebte Foto von Wilhelm Grevel wurde mit &lt;figure&gt; markiert, während das Gedicht auf Seite 7 mit &lt;lg&gt; und &lt;l&gt; in Versform gebracht wurde.</li>
+                    <li>Seitenzahlen, die sich stets außerhalb der Tabellenstruktur einer Seite befinden, wurden in zweifacher Weise ausgezeichnet: Die im Dokument sichtbaren Seitenzahlen wurden, da es sich um nachträgliche Hinzufügungen handelt, mit dem Element &lt;add&gt; markiert. Da diese Zählung allerdings aufgrund menschlichen Versagens Doppelungen aufweist und Leerseiten am Ende des Dokumentes nicht mehr gezählt werden, wurde jeder Seitenumbruch zusätzlich mit dem Element &lt;pb&gt; und einer fortlaufenden Nummer von 1 bis 367 versehen.</li>
+                    <li>Platzfüllende Striche, die allein der Strukturierung innerhalb der Reihen dienen, wurden weder transkribiert noch ausgezeichnet. Sie können bei Bedarf im Faksimile nachverfolgt werden.</li>
+                    <li>Vertikale Leerstellen zwischen Verzeichnungseinheiten, die groß genug sind, dass man in ihnen Nachtragungen einfügen könnte, wurden mit dem Element &lt;space&gt; markiert. Das Attribut @quantity gibt Auskunft über die Länge der Leerstelle in Millimetern. In der Onlinedarstellung der Edition wurde mit CSS versucht, diesen Längen möglichst zu entsprechen, sie ist allerdings von der jeweiligen Bildschirmgröße abhängig.</li>
+                    <li>Personen wurden mit dem Element &lt;persName&gt; auszeichnet und mit entsprechenden ID im Personenregister verknüft. Rollen- und Organisationsangaben, die im Katalog häufig Teil des Namens sind, wurden innerhalb von &lt;persName&gt; mit &lt;roleName&gt; bzw. &lt;orgName&gt; markiert.</li>
+                    <li>Bände, seien es Monographien und Bände mehrbändiger Werke, wurden mit dem Element &lt;bibl&gt; ausgezeichnet. Innerhalb von &lt;bibl&gt; wurde der Titel mit &lt;title&gt; (und dem Attribut @level=‘m‘) markiert, welches mit der Werksebene im Werkregister verknüpft wurde, und die Ausgabe mit &lt;rs&gt;, welche mit der Ausgabenebene im Werksregister verknüpft wurde. Titel von mehrbändigen Bänden wurden mit &lt;title&gt; und dem Attribut @level=‘s‘ versehen.</li>
+                    <li>Orte wurden mit dem Element &lt;placeName&gt; versehen und durch ihre ID mit dem Ortsregister verknüpft.</li>
+                    <li>Datumsangaben wurden mit &lt;date&gt; markiert. Um die Datenauslesung von der Schreibweise im Dokument unabhängig zu machen, wird sie als Wert im ISO-Formt im Attribut @when-iso wiederholt.</li>
+                    <li>Das Buchformat wurde im Element &lt;dim&gt; innerhalb von &lt;dimensions&gt; ausgezeichnet. Der Wert des Attributes @n bezieht sich auf die Blätteranzahl eines Bogens, d. h. das Folioformat hat den Wert „2“, ein Oktavformat den Wert „8“.</li>
+                    <li>Verschiedene Entitäten werden in der Onlinedarstellung der Edition zur einfachen Unterscheidung farbig unterschiedlich gestrichelt unterstrichen: Personen grün, Titel mehrbändiger Werke orange, Titel einzelner Bände rot, Orte dunkelblau.</li>
+                    <li>Wörter, die sich durch ihre Semantik auf bereits genannte Entitäten beziehen, etwa „ejusdem“ und „idem“ wurden durch das Attribut @copyOf mit der vorherigen Nennung in Verbindung gebracht.</li>
+                    <li>Angaben über die Anzahl von Büchern wurden mit dem Element &lt;measure&gt; realisiert. Dabei ist zwischen Dubletten- und Verlustangaben zu unterscheiden. Bei Dubletten (mit @type=‘duplicate‘) ergibt sich der Wert des Attributs @quantity nicht aus der Anzahl der Dubletten, sondern aus der Anzahl der Exemplare insgesamt. Die Angabe „in 2.plo“ hätte also den Wert „2“. Bei Verlustangaben (mit @type=‘loss‘) bezieht sich der Wert allerdings auf die Anzahl der verlorengegangenen Exemplare.</li>
+                    <li>Verschiedene Hände sind in der Auszeichnung durch das Attribut @hand markiert. Dabei wird zwischen folgenden Händen unterschieden: <ul>
+                        <li>„hand1“ stellt die saubere, handschriftliche Antiqua als die Standardhand bei der initialen Erstellung des Katalogs im Jahr 1761 dar.</li>
+                        <li>„hand2“ umfasst alle nachträglichen Hinzufügungen und Streichungen mit Tinte, die sich noch mit der zeitgenössischen Nutzung im Kloster in Verbindung bringen lassen. In der Onlinedarstellung der Edition werden sie in dunkelbrauner Farbe und in Kursivschrift präsentiert.</li>
+                        <li>„hand3“ umfasst Hinzufügungen und Streichungen mit Bleistift. Sie sind sehr wahrscheinlich ebenfalls noch der Nutzung im Kloster zuzuordnen. In der Onlinedarstellung der Edition wird sie in grauer Farbe und in Kursivschrift präsentiert.</li>
+                        <li>„hand4“ markiert handschriftliche Hinzufügungen nach der Auflösung des Klosters. In der Onlinedarstellung der Edition werden sie in dunkelbrauner Farbe und in Kursivschrift präsentiert.</li>
+                        <li>„hand5“ markiert Einträge mit der Schreibmaschine.</li>
+                        </ul></li>
+                    <li>Durchstreichungen wurden mit dem Element &lt;del&gt; und dem Attribut @rend=‘strikethrough‘ markiert. In der Onlinedarstellung der Edition ist der Text durchgestrichen.</li>
+                    <li>Nachträgliche Hinzufügungen, meist durch andere Hände, wurden mit dem Element &lt;add&gt; ausgezeichnet. Wenn die Hinzufügung eine Ersetzung darstellt, wurde diese mit &lt;subst&gt; markiert.</li>
+                    <li>Lücken in der Transkription, häufig aufgrund von Unleserlichkeit wurden mit dem Element &lt;gap&gt;, dem Attribut @reason für den Grund, etwa „illegible“, und einer Angabe über die Anzahl der unleserlichen Zeichen, also der Länge der Lücke, markiert. In der Onlinedarstellung der Edition werden Lücken in der Transkription durch drei Punkte und einer Angabe über die Lückenlänge in eckigen Klammern und in dunkelblauer Farbe dargestellt.</li>
+                    <li>Abkürzungen wurden mit &lt;abbr&gt; ausgezeichnet. Wo es möglich war, diese aufzulösen, geschah dies im Element &lt;expan&gt;, wobei das Element &lt;choice&gt; die Wahl zwischen abgekürzter und aufgelöster Variante erlaubt.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Title</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>Publication Information</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Information about the source</p>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <text>
+      <body>      
+         <list type="lang">
+            <item>
+               <abbr>deu</abbr><expan>Deutsch</expan>
+            </item>
+            <item>
+               <abbr>eng</abbr><expan>Englisch</expan>
+            </item>
+            <item>
+               <abbr>fre</abbr><expan>Französisch</expan>
+            </item>
+            <item>
+               <abbr>ita</abbr><expan>Italienisch</expan>
+            </item>
+            <item>
+               <abbr>nld</abbr><expan>Niederländisch</expan>
+            </item>
+            <item>
+               <abbr>lat</abbr><expan>Latein</expan>
+            </item>
+            <item>
+               <abbr>gre</abbr><expan>Griechisch</expan>
+            </item>
+            <item>
+               <abbr>spa</abbr><expan>Spanisch</expan>
+            </item>
+            <item>
+               <abbr>heb</abbr><expan>Hebräisch</expan>
+            </item>
+            <item>
+               <abbr>por</abbr><expan>Portugiesisch</expan>
+            </item>
+         </list>
+         
+         
+         <list type="format">
+            <item>
+               <abbr>2</abbr><expan>Folio</expan>
+            </item>
+            <item>
+               <abbr>4</abbr><expan>Quart</expan>
+            </item>
+            <item>
+               <abbr>8</abbr><expan>Oktav</expan>
+            </item>
+            <item>
+               <abbr>12</abbr><expan>Duodez</expan>
+            </item>
+            <item>
+               <abbr>16</abbr><expan>Sedez</expan>
+            </item>
+            <item>
+               <abbr>18</abbr><expan>Oktodez</expan>
+            </item>
+            <item>
+               <abbr>20</abbr><expan>Vigesimo</expan>
+            </item>
+         </list>
+         
+         <list type="category">
+            <item>
+               <abbr>A</abbr><expan>Sacra Scriptura</expan>
+            </item>
+            <item>
+               <abbr>D</abbr><expan>Scriptores Ordinum Religiosorum</expan>
+            </item>
+         </list>
+         
+         <list type="idno">
+            <item>
+               <abbr>catalog</abbr><expan>Katalog</expan>
+            </item>
+            <item>
+               <abbr>guessed</abbr><expan>Geschätzt</expan>
+            </item>
+            <item>
+               <abbr>orbisLatinus</abbr><expan>Orbis Latinus</expan>
+            </item>
+            <item>
+               <abbr>gateway-bayern</abbr><expan>Gateway Bayern</expan>
+            </item>
+            <item>
+               <abbr>k10plus</abbr><expan>K10Plus</expan>
+            </item>
+            <item>
+               <abbr>kvk</abbr><expan>KVK</expan>
+            </item>
+            <item>
+               <abbr>hbz</abbr><expan>HBZ</expan>
+            </item>
+            <item>
+               <abbr>gnd</abbr><expan>GND</expan>
+            </item>
+            <item>
+               <abbr>wikipedia</abbr><expan>Wikipedia</expan>
+            </item>
+            <item>
+               <abbr>wikidata</abbr><expan>Wikidata</expan>
+            </item>
+            <item>
+               <abbr>viaf</abbr><expan>VIAF</expan>
+            </item>
+            <item>
+               <abbr>d-bio</abbr><expan>Deutsche Biographie</expan>
+            </item>
+            <item>
+               <abbr>geonames</abbr><expan>Geonames</expan>
+            </item>
+            <item>
+               <abbr>vd16</abbr><expan>VD16</expan>
+            </item>
+            <item>
+               <abbr>vd17</abbr><expan>VD17</expan>
+            </item>
+            <item>
+               <abbr>vd18</abbr><expan>VD18</expan>
+            </item>
+            <item>
+               <abbr>mdz</abbr><expan>MDZ</expan>
+            </item>
+            <item>
+               <abbr>google-books</abbr><expan>Google Books</expan>
+            </item>
+            <item>
+               <abbr>uni-freiburg</abbr><expan>Uni Freiburg</expan>
+            </item>
+            <item>
+               <abbr>bsb</abbr><expan>BSB</expan>
+            </item>
+            <item>
+               <abbr>K10plusPPN</abbr><expan>K10plusPPN</expan>
+            </item>
+            <item>
+               <abbr>ppn</abbr><expan>PPN</expan>
+            </item>
+         </list>
+         
+         <list type="sex">
+            <item>
+               <abbr>m</abbr><expan>Männlich</expan>
+            </item>
+            <item>
+               <abbr>w</abbr><expan>Weiblich</expan>
+            </item>
+         </list>
+         
+      </body>
+   </text>
+</TEI>

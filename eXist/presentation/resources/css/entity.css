@@ -1,0 +1,111 @@
+#entity-class {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+#entity-id {
+    text-align: center;
+    color: gray;
+    margin-top: 0;
+}
+
+#subtitle {
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 0;
+    
+}
+
+h1 {
+    font-size: 3.5em;
+}
+
+h4 {
+    margin-top: 30px;
+    font-size: 2em;
+}
+
+li {
+    font-size: 1.2em;
+    margin-bottom: 0.2em;
+}
+
+li li {
+    font-size: 0.95em;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.low-opacity {
+    opacity: 0.75;
+}
+
+#entity-image-col {
+   display: flex;
+   justify-content: center;
+}
+
+#entity-image-container {
+    max-width: 250px;
+    display: flex;
+    justify-content: center;
+}
+#entity-image-container img {
+    object-fit: contain;
+}
+
+#entity-image {
+    width: 250px;
+}
+
+
+ /* Tooltip container */
+.tooltipcontainer {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltipcontainer .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  font-weight: normal;
+  font-size: 16px;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltipcontainer .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltipcontainer:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+} 
+

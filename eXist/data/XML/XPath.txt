@@ -1,0 +1,2 @@
+<row>s auf einer Seite zählen (mit Überschriften!):
+count(//table/row[../preceding-sibling::pb[1][@n='9']])

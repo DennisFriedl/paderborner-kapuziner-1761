@@ -1,0 +1,5 @@
+<package xmlns="http://expath.org/ns/pkg" name="http://API" abbrev="API" version="0.35" spec="1.0">
+    <title>Kapuzineredition API</title>
+    <dependency package="http://exist-db.org/apps/shared"/>
+    <!-- -->
+</package>
